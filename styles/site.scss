@@ -1,0 +1,17 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap');
+
+body {
+    // border: solid 1px red;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: #000;
+}
+
+body, input {
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    color: #ccc;
+}
+
+@import 'site-loading.scss';
+@import '../App.razor.scss';

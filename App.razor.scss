@@ -1,0 +1,20 @@
+.command-line-input {
+    display: flex;
+
+    .prompt-user-name {
+        color: #16c60c;
+    }
+
+    .input {
+        flex-grow: 1;
+        padding: 0 0.5rem;
+
+        input {
+            margin: 0;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+    }
+}

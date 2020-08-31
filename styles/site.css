@@ -1,15 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap");
-body {
-  margin: 0;
-  padding: 0.5rem;
-  background-color: #000; }
-
-body, input {
-  font-family: 'Fira Code', monospace;
-  font-size: 16px;
-  color: #ccc; }
-
-.loading {
+﻿.loading {
   font-size: 0;
   white-space: nowrap; }
   .loading div {
@@ -59,17 +48,3 @@ body, input {
     width: 0; }
   75%, 100% {
     width: auto; } }
-
-.command-line-input {
-  display: flex; }
-  .command-line-input .prompt-user-name {
-    color: #16c60c; }
-  .command-line-input .input {
-    flex-grow: 1;
-    padding: 0 0.5rem; }
-    .command-line-input .input input {
-      margin: 0;
-      width: 100%;
-      background-color: transparent;
-      border: none;
-      outline: none; }
