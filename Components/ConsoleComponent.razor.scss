@@ -1,0 +1,9 @@
+﻿.console-component {
+    .console-line {
+        word-break: break-all;
+
+        .console-fragment {
+            display: inline-block;
+        }
+    }
+}

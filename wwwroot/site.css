@@ -73,3 +73,8 @@ body, input {
       background-color: transparent;
       border: none;
       outline: none; }
+
+.console-component .console-line {
+  word-break: break-all; }
+  .console-component .console-line .console-fragment {
+    display: inline-block; }
