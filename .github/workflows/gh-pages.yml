@@ -20,7 +20,7 @@ jobs:
 
       # Publish the site
       - name: Publish
-        run: dotnet publish -c Release -o public -p:GHPages=true
+        run: dotnet publish CUIFlavoredPortfolioSite/CUIFlavoredPortfolioSite.csproj -c Release -o public -p:GHPages=true
 
       # Deploy the site
       - name: Deploy

@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30420.98
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CUIFlavoredPortfolioSite", "CUIFlavoredPortfolioSite.csproj", "{179B1988-3709-4EB5-846E-69ECBE7D4C5C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE5932FB-40A8-4A57-9A9A-C8CB8D730532}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\gh-pages.yml = .github\workflows\gh-pages.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUIFlavoredPortfolioSite.Test", "..\CUIFlavoredPortfolioSite.Test\CUIFlavoredPortfolioSite.Test.csproj", "{6FBD1E3C-8ADE-4616-9ACA-C7563AB8D3D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CUIFlavoredPortfolioSite", "CUIFlavoredPortfolioSite\CUIFlavoredPortfolioSite.csproj", "{ABB81B02-8224-414B-A4C7-A78B641BF275}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CUIFlavoredPortfolioSite.Test", "CUIFlavoredPortfolioSite.Test\CUIFlavoredPortfolioSite.Test.csproj", "{4C211B53-4689-4969-BB18-7051EC002D52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{179B1988-3709-4EB5-846E-69ECBE7D4C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{179B1988-3709-4EB5-846E-69ECBE7D4C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{179B1988-3709-4EB5-846E-69ECBE7D4C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{179B1988-3709-4EB5-846E-69ECBE7D4C5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FBD1E3C-8ADE-4616-9ACA-C7563AB8D3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FBD1E3C-8ADE-4616-9ACA-C7563AB8D3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FBD1E3C-8ADE-4616-9ACA-C7563AB8D3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FBD1E3C-8ADE-4616-9ACA-C7563AB8D3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABB81B02-8224-414B-A4C7-A78B641BF275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABB81B02-8224-414B-A4C7-A78B641BF275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABB81B02-8224-414B-A4C7-A78B641BF275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABB81B02-8224-414B-A4C7-A78B641BF275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C211B53-4689-4969-BB18-7051EC002D52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C211B53-4689-4969-BB18-7051EC002D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C211B53-4689-4969-BB18-7051EC002D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C211B53-4689-4969-BB18-7051EC002D52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
