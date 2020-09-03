@@ -66,7 +66,9 @@ body, input {
     color: #16c60c; }
   .command-line-input .input {
     flex-grow: 1;
-    padding: 0 0.5rem; }
+    padding: 0 0.5rem;
+    margin-top: -1px;
+    margin-left: -0.5px; }
     .command-line-input .input input {
       margin: 0;
       width: 100%;

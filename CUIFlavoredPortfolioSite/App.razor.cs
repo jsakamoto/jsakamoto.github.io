@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite
 {
@@ -36,7 +38,35 @@ namespace CUIFlavoredPortfolioSite
         {
             if (e.Key == "Enter")
             {
+                ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + CommandLineInputText);
+                ProcessCommandLine();
                 CommandLineInputText = "";
+            }
+        }
+
+        private void ProcessCommandLine()
+        {
+            if (CommandLineInputText != "")
+            {
+                var commandLineItems = CommandLineInputText.Split(' ');
+                var commandName = commandLineItems.First();
+                var commandArgs = commandLineItems.Skip(1);
+
+                if (commandName == "clear")
+                {
+                    if (commandArgs.Any())
+                    {
+                        ConsoleHost.WriteLine("Usage: clear");
+                    }
+                    else
+                    {
+                        ConsoleHost.Clear();
+                    }
+                }
+                else
+                {
+                    ConsoleHost.WriteLine(commandName + ": command not found");
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -16,6 +17,8 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
 
         private int _IdSequence = 0;
 
+        public event EventHandler StateHasChanged;
+
         public IConsoleHost Write(string text)
         {
             if (_CurrentLine == null)
@@ -23,6 +26,7 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
                 _CurrentLine = NewLine();
             }
             _CurrentLine.AddFragments(CreateFragments(text));
+            StateHasChanged?.Invoke(this, EventArgs.Empty);
             return this;
         }
 
@@ -33,6 +37,7 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
             var targetLine = _CurrentLine ?? NewLine();
             targetLine.AddFragments(CreateFragments(text));
             _CurrentLine = null;
+            StateHasChanged?.Invoke(this, EventArgs.Empty);
             return this;
         }
 
@@ -46,6 +51,7 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
         public void Clear()
         {
             _Lines.Clear();
+            StateHasChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private IEnumerable<ConsoleFragment> CreateFragments(string text)
