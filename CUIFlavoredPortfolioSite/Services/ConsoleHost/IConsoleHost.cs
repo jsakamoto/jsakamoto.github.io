@@ -8,5 +8,6 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
         IConsoleHost Write(string text);
         IConsoleHost WriteLine();
         IConsoleHost WriteLine(string text);
+        void Clear();
     }
 }

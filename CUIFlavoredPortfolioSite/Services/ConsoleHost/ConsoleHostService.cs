@@ -46,5 +46,10 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
         {
             return new ConsoleFragment(_IdSequence++, text, _CurrentForeColor);
         }
+
+        public void Clear()
+        {
+            _Lines.Clear();
+        }
     }
 }
