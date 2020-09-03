@@ -15,9 +15,9 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
             Id = id;
         }
 
-        public void AddFragment(ConsoleFragment fragment)
+        public void AddFragments(IEnumerable<ConsoleFragment> fragments)
         {
-            _Fragments.Add(fragment);
+            _Fragments.AddRange(fragments);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
+﻿namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
 {
     public class ConsoleFragment
     {
@@ -8,9 +6,9 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
 
         public string Text { get; }
 
-        public Color ForeColor { get; }
+        public string ForeColor { get; }
 
-        public ConsoleFragment(int id, string text, Color foreColor)
+        public ConsoleFragment(int id, string text, string foreColor)
         {
             Id = id;
             Text = text;

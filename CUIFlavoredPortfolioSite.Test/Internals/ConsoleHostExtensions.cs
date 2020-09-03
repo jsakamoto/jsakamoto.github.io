@@ -24,7 +24,7 @@ namespace CUIFlavoredPortfolioSite.Test.Internals
         {
             return fragments.Select(f =>
                 $"t:{f.Text}" +
-                (flags.HasFlag(Internals.Dump.ForeColor) ? $",f:#{f.ForeColor.R:x2}{f.ForeColor.G:x2}{f.ForeColor.B:x2}" : "")
+                (flags.HasFlag(Internals.Dump.ForeColor) ? $",f:{f.ForeColor}" : "")
             );
         }
     }
