@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace CUIFlavoredPortfolioSite
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<IConsoleHost, ConsoleHostService>();
+            builder.Services.AddScoped<ICommandSet, CommandSetService>();
 
             await builder.Build().RunAsync();
         }

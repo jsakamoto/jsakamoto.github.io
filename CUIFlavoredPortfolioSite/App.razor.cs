@@ -14,7 +14,7 @@ namespace CUIFlavoredPortfolioSite
 
         protected override void OnInitialized()
         {
-            ConsoleHost.Write("Hi,").Write("Evey").WriteLine("one.");
+            ConsoleHost.Write("Hi,").Write("Every").WriteLine("one.");
             ConsoleHost
                 .WriteLine("Nice to meet you.")
                 .WriteLine();
@@ -48,20 +48,11 @@ namespace CUIFlavoredPortfolioSite
         {
             if (CommandLineInputText != "")
             {
-                var commandLineItems = CommandLineInputText.Split(' ');
-                var commandName = commandLineItems.First();
-                var commandArgs = commandLineItems.Skip(1);
-
-                if (commandName == "clear")
+                var commandArgs = CommandLineInputText.Split(' ');
+                var commandName = commandArgs.First();
+                if (CommandSet.TryGetCommand(commandName, out var command))
                 {
-                    if (commandArgs.Any())
-                    {
-                        ConsoleHost.WriteLine("Usage: clear");
-                    }
-                    else
-                    {
-                        ConsoleHost.Clear();
-                    }
+                    command.Invoke(ConsoleHost, commandArgs);
                 }
                 else
                 {
