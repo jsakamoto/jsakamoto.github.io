@@ -80,4 +80,5 @@ body, input {
 .console-component .console-line {
   word-break: break-all; }
   .console-component .console-line .console-fragment {
-    display: inline-block; }
+    display: inline-block;
+    white-space: pre-wrap; }

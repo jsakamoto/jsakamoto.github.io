@@ -7,6 +7,8 @@ namespace CUIFlavoredPortfolioSite.Services.CommandSet
     {
         IEnumerable<string> Names { get; }
 
+        string Description { get; }
+
         void Invoke(IConsoleHost consoleHost, string[] args);
     }
 }

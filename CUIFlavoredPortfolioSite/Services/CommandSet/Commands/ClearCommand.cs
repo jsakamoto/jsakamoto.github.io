@@ -8,6 +8,8 @@ namespace CUIFlavoredPortfolioSite.Services.CommandSet.Commands
     {
         public IEnumerable<string> Names { get; } = new[] { "clear", "cls" };
 
+        public string Description => "clear console.";
+
         public void Invoke(IConsoleHost consoleHost, string[] args)
         {
             if (args.Skip(1).Any())

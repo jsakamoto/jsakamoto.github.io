@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CUIFlavoredPortfolioSite.Services.CommandSet.Commands;
 
 namespace CUIFlavoredPortfolioSite.Services.CommandSet
 {
     public class CommandSetService : ICommandSet
     {
-        private readonly List<ICommand> _Commands = new List<ICommand>();
+        private readonly IEnumerable<ICommand> _Commands;
 
-        public CommandSetService()
+        public CommandSetService(IEnumerable<ICommand> commands)
         {
-            _Commands.AddRange(new ICommand[] {
-                new ClearCommand()
-            });
+            _Commands = commands;
         }
 
         public bool TryGetCommand(string commandName, out ICommand command)
