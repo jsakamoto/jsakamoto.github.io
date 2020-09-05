@@ -14,7 +14,7 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
             ["\x1b[93m"] = "#f9f1a5", // Yellow     
             ["\x1b[94m"] = "#3b78ff", // Blue       
             ["\x1b[95m"] = "#b4009e", // Magenta    
-            ["\x1b[96m"] = "#b4009e", // Cyan       
+            ["\x1b[96m"] = "#61d6d6", // Cyan       
             ["\x1b[97m"] = "#f2f2f2", // White      
 
             ["\x1b[30m"] = "#0d0d0d", // Black      
