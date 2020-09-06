@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CUIFlavoredPortfolioSite", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CUIFlavoredPortfolioSite.Test", "CUIFlavoredPortfolioSite.Test\CUIFlavoredPortfolioSite.Test.csproj", "{4C211B53-4689-4969-BB18-7051EC002D52}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Figgle", "figgle\Figgle\Figgle.csproj", "{22EFC983-A7B5-428B-96F8-37820FCA6CD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{4C211B53-4689-4969-BB18-7051EC002D52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C211B53-4689-4969-BB18-7051EC002D52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C211B53-4689-4969-BB18-7051EC002D52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22EFC983-A7B5-428B-96F8-37820FCA6CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EFC983-A7B5-428B-96F8-37820FCA6CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EFC983-A7B5-428B-96F8-37820FCA6CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EFC983-A7B5-428B-96F8-37820FCA6CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
