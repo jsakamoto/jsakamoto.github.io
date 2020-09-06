@@ -25,7 +25,13 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
             {
                 _CurrentLine = NewLine();
             }
-            _CurrentLine.AddFragments(CreateFragments(text));
+            var lines = text.Split('\n').Select(t => t.TrimEnd('\r')).ToArray();
+            for (var l=0; l<lines.Length;l++)
+            {
+                if (l > 0) _CurrentLine = NewLine();
+                _CurrentLine.AddFragments(CreateFragments(lines[l]));
+            }
+
             StateHasChanged?.Invoke(this, EventArgs.Empty);
             return this;
         }
@@ -35,7 +41,14 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
         public IConsoleHost WriteLine(string text)
         {
             var targetLine = _CurrentLine ?? NewLine();
-            targetLine.AddFragments(CreateFragments(text));
+
+            var lines = text.Split('\n').Select(t => t.TrimEnd('\r')).ToArray();
+            for (var l = 0; l < lines.Length; l++)
+            {
+                if (l > 0) targetLine = NewLine();
+                targetLine.AddFragments(CreateFragments(lines[l]));
+            }
+
             _CurrentLine = null;
             StateHasChanged?.Invoke(this, EventArgs.Empty);
             return this;

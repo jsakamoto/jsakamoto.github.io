@@ -17,8 +17,17 @@ namespace CUIFlavoredPortfolioSite.Test
             host.Lines.Dump().Is("t:Foo");
 
             host.Write("Bar");
-            host.Lines.Dump(Dump.ForeColor)
-                .Is("t:Foo,f:#cccccc|t:Bar,f:#cccccc");
+            host.Lines.Dump().Is("t:Foo|t:Bar");
+
+            host.Write("Fizz\r\nBuzz");
+            host.Lines.Dump().Is(
+                "t:Foo|t:Bar|t:Fizz",
+                "t:Buzz");
+
+            host.Write("FizzBuzz");
+            host.Lines.Dump(Dump.ForeColor).Is(
+                "t:Foo,f:#cccccc|t:Bar,f:#cccccc|t:Fizz,f:#cccccc",
+                "t:Buzz,f:#cccccc|t:FizzBuzz,f:#cccccc");
         }
 
         [Fact]
@@ -39,11 +48,19 @@ namespace CUIFlavoredPortfolioSite.Test
                 "t:");
 
             host.Write("Buzz");
+            host.Lines.Dump().Is(
+                "t:Foo|t:Bar",
+                "t:Fizz",
+                "t:",
+                "t:Buzz");
+
+            host.WriteLine("Lorem\nIpsum");
             host.Lines.Dump(Dump.ForeColor).Is(
                 "t:Foo,f:#cccccc|t:Bar,f:#cccccc",
                 "t:Fizz,f:#cccccc",
                 "t:,f:#cccccc",
-                "t:Buzz,f:#cccccc");
+                "t:Buzz,f:#cccccc|t:Lorem,f:#cccccc",
+                "t:Ipsum,f:#cccccc");
         }
 
         [Fact]
