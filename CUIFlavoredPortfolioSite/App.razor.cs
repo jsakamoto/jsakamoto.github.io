@@ -38,7 +38,7 @@ namespace CUIFlavoredPortfolioSite
                 await Task.Delay(r.Next(50, 200));
             }
             await Task.Delay(400);
-            OnKeyUpCommandLineInput(new KeyboardEventArgs { Key = "Enter" });
+            ExecuteCommand();
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -49,18 +49,19 @@ namespace CUIFlavoredPortfolioSite
 
         private void OnKeyUpCommandLineInput(KeyboardEventArgs e)
         {
+            if (!_Initialized) return;
             if (e.Key == "Enter")
             {
-                ExecuteCommand(CommandLineInputText);
-                CommandLineInputText = "";
-                StateHasChanged();
+                ExecuteCommand();
             }
         }
 
-        private void ExecuteCommand(string commandLineInputText)
+        private void ExecuteCommand()
         {
-            ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + commandLineInputText);
-            ProcessCommandLine(commandLineInputText);
+            ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + CommandLineInputText);
+            ProcessCommandLine(CommandLineInputText);
+            CommandLineInputText = "";
+            StateHasChanged();
         }
 
         private void ProcessCommandLine(string commandLineInputText)
