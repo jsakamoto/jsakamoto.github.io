@@ -31,6 +31,7 @@ namespace CUIFlavoredPortfolioSite
             services.AddScoped<ICommand, HelpCommand>();
             services.AddScoped<ICommand, FiggleCommand>();
             services.AddScoped<ICommand, ProfileCommand>();
+            services.AddScoped<ICommand, BannerCommand>();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Figgle;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using static Toolbelt.AnsiEscCode.Colorize;
@@ -14,10 +13,12 @@ namespace CUIFlavoredPortfolioSite
 
         private string CommandLineInputText { get; set; } = "";
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            ConsoleHost.WriteLine(Yellow(FiggleFonts.Slant.Render("I'm")));
-            ConsoleHost.WriteLine(Yellow(FiggleFonts.Slant.Render("J.Sakamoto !")));
+            await Task.Delay(500);
+            ExecuteCommand("banner");
+            await Task.Delay(500);
+            ExecuteCommand("profile");
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -34,17 +35,22 @@ namespace CUIFlavoredPortfolioSite
         {
             if (e.Key == "Enter")
             {
-                ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + CommandLineInputText);
-                ProcessCommandLine();
+                ExecuteCommand(CommandLineInputText);
                 CommandLineInputText = "";
             }
         }
 
-        private void ProcessCommandLine()
+        private void ExecuteCommand(string commandLineInputText)
         {
-            if (CommandLineInputText != "")
+            ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + commandLineInputText);
+            ProcessCommandLine(commandLineInputText);
+        }
+
+        private void ProcessCommandLine(string commandLineInputText)
+        {
+            if (commandLineInputText != "")
             {
-                var commandArgs = CommandLineInputText.Split(' ');
+                var commandArgs = commandLineInputText.Split(' ');
                 var commandName = commandArgs.First();
                 if (CommandSet.TryGetCommand(commandName, out var command))
                 {
@@ -59,7 +65,7 @@ namespace CUIFlavoredPortfolioSite
                 }
                 else
                 {
-                    ConsoleHost.WriteLine(commandName + ": command not found");
+                    ConsoleHost.WriteLine($"{commandName}: command not found. Please try out {Cyan("help")} command.");
                 }
             }
         }
