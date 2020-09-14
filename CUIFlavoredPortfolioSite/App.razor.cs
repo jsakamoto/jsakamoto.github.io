@@ -30,12 +30,12 @@ namespace CUIFlavoredPortfolioSite
 
         private async Task TypeAndExecuteCommand(string text)
         {
-            var r = new Random();
+            var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
             foreach (var c in text)
             {
                 CommandLineInputText += c;
                 StateHasChanged();
-                await Task.Delay(r.Next(100, 200));
+                await Task.Delay(r.Next(50, 200));
             }
             await Task.Delay(400);
             OnKeyUpCommandLineInput(new KeyboardEventArgs { Key = "Enter" });
