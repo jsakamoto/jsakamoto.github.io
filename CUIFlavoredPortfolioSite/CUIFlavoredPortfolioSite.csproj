@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
     <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
+    <Authors>J.Sakamoto</Authors>
+    <Product>CUI Flavored Portfolio Site - Powered by Blazor WebAssembly</Product>
+    <Copyright>Copyright (C) J.Sakamoto</Copyright>
+    <PackageProjectUrl></PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
