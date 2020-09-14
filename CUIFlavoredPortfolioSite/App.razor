@@ -10,7 +10,12 @@
     <span class="prompt-user-name">jsakamoto</span>
     <span class="prompt">$</span>
     <span class="input">
-        <input id="command-line-input" @ref="CommandLineInput" @bind="CommandLineInputText" @onkeyup="OnKeyUpCommandLineInput" autocomplete="off" type="url" />
+        <input id="command-line-input"
+               @ref="CommandLineInput"
+               @bind="CommandLineInputText"
+               @onkeyup="OnKeyUpCommandLineInput"
+               readonly="@(!_Initialized)"
+               autocomplete="off" type="url" />
     </span>
 </div>
 

@@ -14,12 +14,31 @@ namespace CUIFlavoredPortfolioSite
 
         private string CommandLineInputText { get; set; } = "";
 
+        private bool _Initialized = false;
+
         protected override async Task OnInitializedAsync()
         {
-            await Task.Delay(500);
-            ExecuteCommand("banner");
-            await Task.Delay(500);
-            ExecuteCommand("profile");
+            await Task.Delay(400);
+            await TypeAndExecuteCommand("banner");
+
+            await Task.Delay(400);
+            await TypeAndExecuteCommand("profile");
+
+            _Initialized = true;
+            StateHasChanged();
+        }
+
+        private async Task TypeAndExecuteCommand(string text)
+        {
+            var r = new Random();
+            foreach (var c in text)
+            {
+                CommandLineInputText += c;
+                StateHasChanged();
+                await Task.Delay(r.Next(100, 200));
+            }
+            await Task.Delay(400);
+            OnKeyUpCommandLineInput(new KeyboardEventArgs { Key = "Enter" });
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -34,6 +53,7 @@ namespace CUIFlavoredPortfolioSite
             {
                 ExecuteCommand(CommandLineInputText);
                 CommandLineInputText = "";
+                StateHasChanged();
             }
         }
 
