@@ -28,11 +28,6 @@ namespace CUIFlavoredPortfolioSite
             await JS.InvokeVoidAsync("Helper.scrollIntoView", this.CommandLineInput);
         }
 
-        private async Task OnBlurCommandLineInput()
-        {
-            await CommandLineInput.FocusAsync();
-        }
-
         private void OnKeyUpCommandLineInput(KeyboardEventArgs e)
         {
             if (e.Key == "Enter")
