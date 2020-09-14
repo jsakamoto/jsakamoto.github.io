@@ -20,8 +20,8 @@ namespace CUIFlavoredPortfolioSite.Commands
                 return;
             }
 
-            consoleHost.WriteLine(Cyan("Name") + " - J.Sakamoto");
-            consoleHost.WriteLine(Cyan("Location") + " - Sapporo, Hokkaido, Japan");
+            consoleHost.WriteLine(Cyan("Name") + "      - J.Sakamoto");
+            consoleHost.WriteLine(Cyan("Location") + "  - Sapporo, Hokkaido, Japan");
 
             consoleHost.WriteLine();
 
