@@ -33,6 +33,7 @@ namespace CUIFlavoredPortfolioSite
             services.AddScoped<ICommand, ProfileCommand>();
             services.AddScoped<ICommand, BannerCommand>();
             services.AddScoped<ICommand, VersionCommand>();
+            services.AddScoped<ICommand, RuntimeInformationCommand>();
         }
     }
 }
