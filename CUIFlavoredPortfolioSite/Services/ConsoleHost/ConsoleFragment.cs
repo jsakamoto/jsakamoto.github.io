@@ -8,11 +8,14 @@
 
         public string ForeColor { get; }
 
-        public ConsoleFragment(int id, string text, string foreColor)
+        public string Link { get; }
+
+        public ConsoleFragment(int id, string text, string foreColor, string link)
         {
             Id = id;
             Text = text;
             ForeColor = foreColor;
+            Link = link;
         }
     }
 }

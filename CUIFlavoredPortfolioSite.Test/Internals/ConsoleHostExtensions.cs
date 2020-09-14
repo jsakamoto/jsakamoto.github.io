@@ -10,6 +10,7 @@ namespace CUIFlavoredPortfolioSite.Test.Internals
     {
         Default = 0b_0000,
         ForeColor = 0b_0001,
+        Link = 0b_0010,
     }
 
     internal static class ConsoleHostExtensions
@@ -24,7 +25,8 @@ namespace CUIFlavoredPortfolioSite.Test.Internals
         {
             return fragments.Select(f =>
                 $"t:{f.Text}" +
-                (flags.HasFlag(Internals.Dump.ForeColor) ? $",f:{f.ForeColor}" : "")
+                (flags.HasFlag(Internals.Dump.ForeColor) ? $",f:{f.ForeColor}" : "") +
+                (flags.HasFlag(Internals.Dump.Link) ? $",l:{f.Link}" : "")
             );
         }
     }

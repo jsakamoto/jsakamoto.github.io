@@ -92,5 +92,15 @@ namespace CUIFlavoredPortfolioSite.Test
                 "t:Lorem ipsum dolor ,f:#cccccc|t:sit,f:#3b78ff",
                 "t:Lorem ipsum dolor sit,f:#cccccc");
         }
+
+        [Fact]
+        public void HyperLinkFragments_Test()
+        {
+            var host = new ConsoleHostService();
+            host.WriteLine($"This is [example](https://example.com) site.");
+
+            host.Lines.Dump(Dump.Link).Is(
+                "t:This is ,l:|t:example,l:https://example.com|t: site.,l:");
+        }
     }
 }

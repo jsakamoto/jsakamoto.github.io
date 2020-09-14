@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic;
 
 namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
 {
@@ -26,7 +27,7 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
                 _CurrentLine = NewLine();
             }
             var lines = text.Split('\n').Select(t => t.TrimEnd('\r')).ToArray();
-            for (var l=0; l<lines.Length;l++)
+            for (var l = 0; l < lines.Length; l++)
             {
                 if (l > 0) _CurrentLine = NewLine();
                 _CurrentLine.AddFragments(CreateFragments(lines[l]));
@@ -91,9 +92,42 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost
                 if (i == 0 || fragmentLength > 0)
                 {
                     var textFragment = text.Substring(fragmentIndex, fragmentLength);
-                    yield return new ConsoleFragment(_IdSequence++, textFragment, _CurrentForeColor);
+
+                    foreach (var fragment in CreateHyperLinkedFragments(textFragment))
+                    {
+                        yield return fragment;
+                    }
                 }
                 UpdateCurrentForeColor(tailPattern);
+            }
+        }
+
+        private IEnumerable<ConsoleFragment> CreateHyperLinkedFragments(string text)
+        {
+            var linkPatterns = Regex.Matches(text, @"\[(?<text>[^\]]+?)\]\((?<link>[^)]+?)\)")
+                .Select(m => (Text: m.Groups["text"].Value, Link: m.Groups["link"].Value, m.Index, m.Length))
+                .ToList();
+
+            if (!linkPatterns.Any())
+            {
+                yield return new ConsoleFragment(_IdSequence++, text, _CurrentForeColor, link: null);
+                yield break;
+            }
+
+            var linkPatPos = 0;
+            var textPos = 0;
+            while (textPos < text.Length)
+            {
+                var pattern = linkPatPos < linkPatterns.Count ? linkPatterns[linkPatPos++] : ("", null, text.Length, 0);
+                var textLen = pattern.Index - textPos;
+                if (textLen > 0) yield return new ConsoleFragment(_IdSequence++, text.Substring(textPos, textLen), _CurrentForeColor, null);
+
+                textPos += textLen;
+
+                if (pattern.Length > 0)
+                    yield return new ConsoleFragment(_IdSequence++, pattern.Text, _CurrentForeColor, pattern.Link);
+
+                textPos += pattern.Length;
             }
         }
 
