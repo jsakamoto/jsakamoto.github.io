@@ -22,6 +22,7 @@ namespace CUIFlavoredPortfolioSite.Commands
             consoleHost.WriteLine($"{Yellow(productName)}");
             consoleHost.WriteLine($"{Cyan("Version")}   - {version}");
             consoleHost.WriteLine($"{Cyan("Copyright")} - {copyright}");
+            consoleHost.WriteLine($"{Cyan("3rd party notice")} - {DarkCyan("[follow this link](https://github.com/jsakamoto/jsakamoto.github.io/blob/master/THIRD-PARTY-NOTICES.txt)")}");
         }
     }
 }
