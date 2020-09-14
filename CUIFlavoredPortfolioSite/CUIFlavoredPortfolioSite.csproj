@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineSwitchParser" Version="1.0.0" />
+    <PackageReference Include="Figgle" Version="0.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0-preview.8.20414.8" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.0.0" />
     <!--<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0-preview.8.20414.8" PrivateAssets="all" />-->
@@ -34,10 +35,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\figgle\Figgle\Figgle.csproj" />
   </ItemGroup>
 
 </Project>

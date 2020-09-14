@@ -12,10 +12,6 @@ jobs:
       # Checkout the code
       - uses: actions/checkout@v2
 
-      # Update submodule
-      - name: Update submodule
-        run: git submodule update --init
-
       # Install .NET Core SDK
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
