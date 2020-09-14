@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite
@@ -24,6 +25,7 @@ namespace CUIFlavoredPortfolioSite
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await CommandLineInput.FocusAsync();
+            await JS.InvokeVoidAsync("Helper.scrollIntoView", this.CommandLineInput);
         }
 
         private async Task OnBlurCommandLineInput()
