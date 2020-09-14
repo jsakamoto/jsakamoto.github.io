@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
-using CUIFlavoredPortfolioSite.Services.CommandSet.Commands;
+using CUIFlavoredPortfolioSite.Commands;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;

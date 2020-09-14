@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CommandLineSwitchParser;
+using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Figgle;
 using static Toolbelt.AnsiEscCode.Colorize;
 
-namespace CUIFlavoredPortfolioSite.Services.CommandSet.Commands
+namespace CUIFlavoredPortfolioSite.Commands
 {
     public class FiggleCommand : ICommand
     {

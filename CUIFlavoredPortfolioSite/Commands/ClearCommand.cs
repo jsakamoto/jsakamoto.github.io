@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 
-namespace CUIFlavoredPortfolioSite.Services.CommandSet.Commands
+namespace CUIFlavoredPortfolioSite.Commands
 {
     public class ClearCommand : ICommand
     {

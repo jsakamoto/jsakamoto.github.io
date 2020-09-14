@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Microsoft.Extensions.DependencyInjection;
 using static Toolbelt.AnsiEscCode.Colorize;
 
-namespace CUIFlavoredPortfolioSite.Services.CommandSet.Commands
+namespace CUIFlavoredPortfolioSite.Commands
 {
     public class HelpCommand : ICommand
     {
