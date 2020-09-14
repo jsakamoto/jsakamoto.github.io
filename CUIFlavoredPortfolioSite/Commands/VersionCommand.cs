@@ -23,6 +23,11 @@ namespace CUIFlavoredPortfolioSite.Commands
             consoleHost.WriteLine($"{Cyan("Version")}   - {version}");
             consoleHost.WriteLine($"{Cyan("Copyright")} - {copyright}");
             consoleHost.WriteLine($"{Cyan("3rd party notice")} - {DarkCyan("[follow this link](https://github.com/jsakamoto/jsakamoto.github.io/blob/master/THIRD-PARTY-NOTICES.txt)")}");
+
+            consoleHost.WriteLine();
+            consoleHost.WriteLine(Cyan("Special Thanks to") + " -");
+            consoleHost.Write("This project has been started after being inspired by [＠AtriaSoft](https://twitter.com/AtriaSoft)'s ");
+            consoleHost.Write("[\"CUIPortfolio\"](https://github.com/Atria64/CUIPortfolio) project.");
         }
     }
 }
