@@ -1,9 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
-    <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
     <Authors>J.Sakamoto</Authors>
     <Product>CUI Flavored Portfolio Site - Powered by Blazor WebAssembly</Product>
     <Copyright>Copyright (C) J.Sakamoto</Copyright>
@@ -23,13 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0-rc.1.20451.17" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0-rc.1.20451.17" PrivateAssets="all" />-->
+    <PackageReference Include="Toolbelt.Blazor.DevServer.WithCssLiveReloader" Version="5.0.0-preview.8.20414.8" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0-rc.1.20451.14" />
+
     <PackageReference Include="CommandLineSwitchParser" Version="1.0.0" />
     <PackageReference Include="Figgle" Version="0.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0-preview.8.20414.8" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.0.0" />
-    <!--<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0-preview.8.20414.8" PrivateAssets="all" />-->
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0-preview.8.20407.11" />
-    <PackageReference Include="Toolbelt.Blazor.DevServer.WithCssLiveReloader" Version="5.0.0-preview.8.20414.8" PrivateAssets="all" />
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.2">
       <PrivateAssets>all</PrivateAssets>
