@@ -13,7 +13,8 @@
         <input id="command-line-input"
                @ref="CommandLineInput"
                @bind="CommandLineInputText"
-               @onkeyup="OnKeyUpCommandLineInput"
+               @bind:event="oninput"
+               @onkeydown="OnKeyDownCommandLineInput"
                readonly="@(!_Initialized)"
                autocomplete="off" type="url" />
     </span>

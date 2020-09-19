@@ -51,7 +51,7 @@ namespace CUIFlavoredPortfolioSite
             await JS.InvokeVoidAsync("Helper.scrollIntoView", this.CommandLineInput);
         }
 
-        private void OnKeyUpCommandLineInput(KeyboardEventArgs e)
+        private void OnKeyDownCommandLineInput(KeyboardEventArgs e)
         {
             if (!_Initialized) return;
 
