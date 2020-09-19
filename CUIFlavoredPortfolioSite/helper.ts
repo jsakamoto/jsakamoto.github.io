@@ -17,4 +17,12 @@
         const commandLineInput = document.getElementById('command-line-input');
         if (commandLineInput !== null) commandLineInput.focus();
     }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            if ((e.srcElement as HTMLElement).id === 'command-line-input') {
+                e.preventDefault();
+            }
+        }
+    })
 }

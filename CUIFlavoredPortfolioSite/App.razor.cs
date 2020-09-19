@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using CUIFlavoredPortfolioSite.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
@@ -14,16 +15,19 @@ namespace CUIFlavoredPortfolioSite
 
         private string CommandLineInputText { get; set; } = "";
 
+        private CommandHistory CommandHistory { get; } = new CommandHistory();
+
         private bool _Initialized = false;
 
         protected override async Task OnInitializedAsync()
         {
             await Task.Delay(400);
+#if RELEASE
             await TypeAndExecuteCommand("banner");
 
             await Task.Delay(400);
             await TypeAndExecuteCommand("profile");
-
+#endif
             _Initialized = true;
             StateHasChanged();
         }
@@ -50,10 +54,27 @@ namespace CUIFlavoredPortfolioSite
         private void OnKeyUpCommandLineInput(KeyboardEventArgs e)
         {
             if (!_Initialized) return;
-            if (e.Key == "Enter")
+
+            switch (e.Key)
             {
-                ExecuteCommand();
+                case "Enter":
+                    ExecuteCommand();
+                    break;
+                case "ArrowUp":
+                    RecallHistory(CommandHistory.TryGetPrevious(out var prevCommand), prevCommand);
+                    break;
+                case "ArrowDown":
+                    RecallHistory(CommandHistory.TryGetNext(out var nextCommand), nextCommand);
+                    break;
+                default: break;
             }
+        }
+
+        private void RecallHistory(bool found, string commandText)
+        {
+            if (!found) return;
+            CommandLineInputText = commandText;
+            StateHasChanged();
         }
 
         private void ExecuteCommand()
@@ -66,6 +87,8 @@ namespace CUIFlavoredPortfolioSite
 
         private void ProcessCommandLine(string commandLineInputText)
         {
+            CommandHistory.Push(commandLineInputText);
+
             if (commandLineInputText != "")
             {
                 var commandArgs = commandLineInputText.Split(' ');

@@ -19,4 +19,11 @@ var Helper;
         if (commandLineInput !== null)
             commandLineInput.focus();
     }
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            if (e.srcElement.id === 'command-line-input') {
+                e.preventDefault();
+            }
+        }
+    });
 })(Helper || (Helper = {}));
