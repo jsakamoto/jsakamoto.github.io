@@ -79,8 +79,10 @@ body, input {
 
 .console-component .console-line {
   word-break: break-all; }
+  .console-component .console-line:before {
+    content: '';
+    display: inline-block; }
   .console-component .console-line .console-fragment {
-    display: inline-block;
     white-space: pre-wrap; }
     .console-component .console-line .console-fragment a {
       color: inherit; }

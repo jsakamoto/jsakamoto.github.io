@@ -2,8 +2,12 @@
     .console-line {
         word-break: break-all;
 
-        .console-fragment {
+        &:before {
+            content: '';
             display: inline-block;
+        }
+
+        .console-fragment {
             white-space: pre-wrap;
 
             a {
