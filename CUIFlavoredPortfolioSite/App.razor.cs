@@ -66,6 +66,10 @@ namespace CUIFlavoredPortfolioSite
                 case "ArrowDown":
                     RecallHistory(CommandHistory.TryGetNext(out var nextCommand), nextCommand);
                     break;
+                case "Tab":
+                    CommandLineInputText = CommandCompletion.Completion(CommandLineInputText);
+                    StateHasChanged();
+                    break;
                 default: break;
             }
         }

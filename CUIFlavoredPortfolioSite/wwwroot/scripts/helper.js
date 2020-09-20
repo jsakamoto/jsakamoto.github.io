@@ -20,7 +20,7 @@ var Helper;
             commandLineInput.focus();
     }
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Tab') {
             if (e.srcElement.id === 'command-line-input') {
                 e.preventDefault();
             }

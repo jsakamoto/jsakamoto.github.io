@@ -6,6 +6,7 @@ using CUIFlavoredPortfolioSite.Commands;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using CUIFlavoredPortfolioSite.Services;
 
 namespace CUIFlavoredPortfolioSite
 {
@@ -19,6 +20,7 @@ namespace CUIFlavoredPortfolioSite
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<IConsoleHost, ConsoleHostService>();
             builder.Services.AddScoped<ICommandSet, CommandSetService>();
+            builder.Services.AddScoped<CommandCompletion>();
 
             RegisterCommands(builder.Services);
 
