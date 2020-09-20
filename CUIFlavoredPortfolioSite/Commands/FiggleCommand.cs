@@ -16,6 +16,8 @@ namespace CUIFlavoredPortfolioSite.Commands
 
         public string Description => "ASCII banner generation";
 
+        private readonly Lazy<IReadOnlyDictionary<string, Func<FiggleFont>>> _Fonts = new Lazy<IReadOnlyDictionary<string, Func<FiggleFont>>>(GetFonts);
+
         private class Options
         {
             public string Font { get; set; } = nameof(FiggleFonts.Standard);
@@ -24,7 +26,7 @@ namespace CUIFlavoredPortfolioSite.Commands
 
         public class FontNotFoundException : Exception
         {
-            public FontNotFoundException(string fontName) : base($"{fontName}: Unable to open font file.") { }
+            public FontNotFoundException(string fontName) : base($"{fontName}: Unable to open font file. (to show available font names, try -h option.)") { }
         }
 
         public void Invoke(IConsoleHost consoleHost, string[] args)
@@ -39,14 +41,10 @@ namespace CUIFlavoredPortfolioSite.Commands
                     return;
                 }
 
-                var fontProp = typeof(FiggleFonts)
-                    .GetProperties(BindingFlags.Static | BindingFlags.Public)
-                    .Where(prop => prop.PropertyType == typeof(FiggleFont))
-                    .FirstOrDefault(prop => prop.Name.ToUpper() == options.Font.ToUpper());
-                if (fontProp == null) throw new FontNotFoundException(options.Font);
+                var found = _Fonts.Value.TryGetValue(options.Font.ToLower(), out var getFont);
+                if (!found) throw new FontNotFoundException(options.Font);
 
-                var font = fontProp.GetValue(null) as FiggleFont;
-                var bannerText = font.Render(string.Join(' ', args.Skip(1)));
+                var bannerText = getFont().Render(string.Join(' ', args.Skip(1)));
                 consoleHost.WriteLine(bannerText);
             }
 
@@ -61,6 +59,19 @@ namespace CUIFlavoredPortfolioSite.Commands
         private void Usage(IConsoleHost consoleHost, string commandName)
         {
             consoleHost.WriteLine($"Usage: {commandName} [-f <font name>] [-h] <message>");
+            consoleHost.WriteLine("  Available font names:");
+            foreach (var fontName in _Fonts.Value.Keys.OrderBy(name => name))
+            {
+                consoleHost.WriteLine($"  - {fontName}");
+            }
+        }
+
+        private static IReadOnlyDictionary<string, Func<FiggleFont>> GetFonts()
+        {
+            return typeof(FiggleFonts)
+                .GetProperties(BindingFlags.Static | BindingFlags.Public)
+                .Where(prop => prop.PropertyType == typeof(FiggleFont))
+                .ToDictionary(prop => prop.Name.ToLower(), prop => (Func<FiggleFont>)(() => prop.GetValue(null) as FiggleFont));
         }
     }
 }
