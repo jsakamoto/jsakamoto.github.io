@@ -27,7 +27,7 @@ namespace CUIFlavoredPortfolioSite.Commands
             consoleHost.WriteLine();
             consoleHost.WriteLine(Cyan("Special Thanks to") + " -");
             consoleHost.Write("This project has been started after being inspired by [＠AtriaSoft](https://twitter.com/AtriaSoft)'s ");
-            consoleHost.Write("[\"CUIPortfolio\"](https://github.com/Atria64/CUIPortfolio) project.");
+            consoleHost.WriteLine("[\"CUIPortfolio\"](https://github.com/Atria64/CUIPortfolio) project.");
         }
     }
 }
