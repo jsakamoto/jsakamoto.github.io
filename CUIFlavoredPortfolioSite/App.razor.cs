@@ -112,6 +112,8 @@ namespace CUIFlavoredPortfolioSite
                 {
                     ConsoleHost.WriteLine($"{commandName}: command not found. Please try out {Cyan("help")} command.");
                 }
+
+                ConsoleHost.WriteLine();
             }
         }
     }
