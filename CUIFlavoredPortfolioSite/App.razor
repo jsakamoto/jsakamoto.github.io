@@ -3,23 +3,31 @@
 @inject CommandCompletion CommandCompletion
 @inject IJSRuntime JS
 
-<div class="console-output">
-    <ConsoleComponent></ConsoleComponent>
+<div class="main">
+    <div class="console-output">
+        <ConsoleComponent></ConsoleComponent>
+    </div>
+
+    <div class="command-line-input">
+        <span class="prompt-user-name">jsakamoto</span>
+        <span class="prompt">$</span>
+        <span class="input">
+            <input id="command-line-input"
+                   @ref="CommandLineInput"
+                   @bind="CommandLineInputText"
+                   @bind:event="oninput"
+                   @onkeydown="OnKeyDownCommandLineInput"
+                   readonly="@(!_Initialized)"
+                   autocomplete="off" type="url" spellcheck="false" />
+        </span>
+    </div>
 </div>
 
-<div class="command-line-input">
-    <span class="prompt-user-name">jsakamoto</span>
-    <span class="prompt">$</span>
-    <span class="input">
-        <input id="command-line-input"
-               @ref="CommandLineInput"
-               @bind="CommandLineInputText"
-               @bind:event="oninput"
-               @onkeydown="OnKeyDownCommandLineInput"
-               readonly="@(!_Initialized)"
-               autocomplete="off" type="url" spellcheck="false" />
-    </span>
-</div>
+<footer>
+    <a href="@GetTwitterShareButtonUrl()" target="_blank" class="twitter-share-button">
+        Tweet
+    </a>
+</footer>
 
 @code {
 }

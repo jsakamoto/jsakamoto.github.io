@@ -45,6 +45,16 @@ namespace CUIFlavoredPortfolioSite
             ExecuteCommand();
         }
 
+        private string GetTwitterShareButtonUrl()
+        {
+            const string description = "This is a CUI flavored portfolio site about @jsakamoto that he created using Blazor WebAssembly!";
+            const string url = "https://jsakamoto.github.io/";
+            return "https://twitter.com/intent/tweet" +
+                $"?text={Uri.EscapeDataString(description)}" +
+                $"&hashtags=Blazor" +
+                $"&url={Uri.EscapeDataString(url)}";
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await CommandLineInput.FocusAsync();
