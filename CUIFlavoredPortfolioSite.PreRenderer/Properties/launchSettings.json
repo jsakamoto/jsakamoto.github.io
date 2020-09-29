@@ -1,20 +1,8 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:61498/",
-      "sslPort": 44326
-    }
-  },
   "profiles": {
     "CUIFlavoredPortfolioSite.PreRenderer": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5000"
+      "commandLineArgs": "C:\\Project\\App\\cui-flavored-portfolio-site\\public\\wwwroot\\index.html"
     }
   }
 }

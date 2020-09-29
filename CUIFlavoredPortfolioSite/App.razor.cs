@@ -11,6 +11,21 @@ namespace CUIFlavoredPortfolioSite
 {
     public partial class App
     {
+        public enum RuntimeModes
+        {
+            Release,
+            Debug,
+            PreRendering
+        }
+
+        [Parameter]
+        public RuntimeModes RuntimeMode { get; set; }
+#if RELEASE
+            = RuntimeModes.Release;
+#else
+            = RuntimeModes.Debug;
+#endif
+
         private ElementReference CommandLineInput;
 
         private string CommandLineInputText { get; set; } = "";
@@ -22,26 +37,36 @@ namespace CUIFlavoredPortfolioSite
         protected override async Task OnInitializedAsync()
         {
             await Task.Delay(400);
-#if RELEASE
-            await TypeAndExecuteCommand("banner");
+            if (this.RuntimeMode != RuntimeModes.Debug)
+            {
+                await TypeAndExecuteCommand("banner");
 
-            await Task.Delay(400);
-            await TypeAndExecuteCommand("profile");
-#endif
+                await Task.Delay(400);
+                await TypeAndExecuteCommand("profile");
+            }
+
             _Initialized = true;
             StateHasChanged();
         }
 
         private async Task TypeAndExecuteCommand(string text)
         {
-            var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
-            foreach (var c in text)
+            if (this.RuntimeMode == RuntimeModes.PreRendering)
             {
-                CommandLineInputText += c;
-                StateHasChanged();
-                await Task.Delay(r.Next(50, 200));
+                CommandLineInputText = text;
             }
-            await Task.Delay(400);
+            else
+            {
+                var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
+                foreach (var c in text)
+                {
+                    CommandLineInputText += c;
+                    StateHasChanged();
+                    await Task.Delay(r.Next(50, 200));
+                }
+                await Task.Delay(400);
+            }
+
             ExecuteCommand();
         }
 
