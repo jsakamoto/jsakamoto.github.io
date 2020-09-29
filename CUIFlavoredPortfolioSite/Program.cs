@@ -17,14 +17,19 @@ namespace CUIFlavoredPortfolioSite
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddScoped<IConsoleHost, ConsoleHostService>();
-            builder.Services.AddScoped<ICommandSet, CommandSetService>();
-            builder.Services.AddScoped<CommandCompletion>();
-
-            RegisterCommands(builder.Services);
+            ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
 
             await builder.Build().RunAsync();
+        }
+
+        public static void ConfigureServices(IServiceCollection services, string baseAddress)
+        {
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseAddress) });
+            services.AddScoped<IConsoleHost, ConsoleHostService>();
+            services.AddScoped<ICommandSet, CommandSetService>();
+            services.AddScoped<CommandCompletion>();
+
+            RegisterCommands(services);
         }
 
         private static void RegisterCommands(IServiceCollection services)
