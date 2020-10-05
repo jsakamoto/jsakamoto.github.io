@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
 
 namespace CUIFlavoredPortfolioSite.PreRenderer
 {
@@ -35,10 +34,6 @@ namespace CUIFlavoredPortfolioSite.PreRenderer
                     CUIFlavoredPortfolioSite.Program.ConfigureServices(services, baseAddress: "http://localhost:5000/");
                 });
 
-            //var stringWriter = new StringWriter();
-            //content.WriteTo(stringWriter, HtmlEncoder.Default);
-            //Console.WriteLine(stringWriter.ToString());
-
             var targetHtmlFilePath = args[0];
             RewriteHtmlFile(targetHtmlFilePath, content);
         }
@@ -57,14 +52,6 @@ namespace CUIFlavoredPortfolioSite.PreRenderer
 
             using var serviceProvider = diContainer.BuildServiceProvider();
             using var scope = serviceProvider.CreateScope();
-
-            //using var host = Host.CreateDefaultBuilder(args)
-            //.ConfigureServices(services =>
-            //{
-            //    services.AddRazorPages();
-            //    configureServices(services);
-            //}).Build();
-            //using var scope = host.Services.CreateScope();
 
             var featureCollection = new FeatureCollection();
             featureCollection.Set<IHttpRequestFeature>(new HttpRequestFeature
