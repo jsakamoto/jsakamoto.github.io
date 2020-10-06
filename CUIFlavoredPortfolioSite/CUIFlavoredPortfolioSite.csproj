@@ -6,7 +6,6 @@
     <Product>CUI Flavored Portfolio Site - Powered by Blazor WebAssembly</Product>
     <Copyright>Copyright (C) J.Sakamoto</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
-    <BeforePublishSPAforGHPages>PreRendering</BeforePublishSPAforGHPages>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -27,7 +26,7 @@
 
     <PackageReference Include="CommandLineSwitchParser" Version="1.0.0" />
     <PackageReference Include="Figgle" Version="0.4.0" />
-    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.1.0.1" />
+    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.1.0.7-preview.1" />
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.2">
       <PrivateAssets>all</PrivateAssets>
@@ -35,6 +34,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <PropertyGroup>
+    <BeforePublishSPAforGHPages>PreRendering</BeforePublishSPAforGHPages>
+  </PropertyGroup>
   <Target Name="PreRendering" AfterTargets="Publish">
     <Exec Command="dotnet run --project ../CUIFlavoredPortfolioSite.PreRenderer/CUIFlavoredPortfolioSite.PreRenderer.csproj -c Release -- $(PublishDir)wwwroot/index.html" />
   </Target>
