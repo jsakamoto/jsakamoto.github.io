@@ -19,14 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.2" />
     <!--<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />-->
-    <PackageReference Include="Toolbelt.Blazor.DevServer.WithCssLiveReloader" Version="5.0.0-preview.8.20414.8" PrivateAssets="all" />
+    <PackageReference Include="Toolbelt.Blazor.DevServer.WithCssLiveReloader" Version="5.0.1" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
 
     <PackageReference Include="CommandLineSwitchParser" Version="1.0.0" />
     <PackageReference Include="Figgle" Version="0.4.0" />
-    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.1.0.7-preview.1" />
+    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.2.0" />
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.2">
       <PrivateAssets>all</PrivateAssets>
