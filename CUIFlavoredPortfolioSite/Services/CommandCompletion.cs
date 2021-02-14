@@ -8,8 +8,6 @@ namespace CUIFlavoredPortfolioSite.Services
     {
         private readonly IEnumerable<string> _CommandNames;
 
-        private string _LastCompleted = "";
-
         private string[] _LastCandidates = null;
 
         private int _LastCandidateIndex = -1;
