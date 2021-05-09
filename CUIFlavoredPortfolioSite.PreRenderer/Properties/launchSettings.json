@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "CUIFlavoredPortfolioSite.PreRenderer": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Project\\App\\cui-flavored-portfolio-site\\public\\wwwroot\\index.html"
-    }
-  }
-}

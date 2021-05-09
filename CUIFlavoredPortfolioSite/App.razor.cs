@@ -14,8 +14,7 @@ namespace CUIFlavoredPortfolioSite
         public enum RuntimeModes
         {
             Release,
-            Debug,
-            PreRendering
+            Debug
         }
 
         [Parameter]
@@ -51,21 +50,14 @@ namespace CUIFlavoredPortfolioSite
 
         private async Task TypeAndExecuteCommand(string text)
         {
-            if (this.RuntimeMode == RuntimeModes.PreRendering)
+            var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
+            foreach (var c in text)
             {
-                CommandLineInputText = text;
+                CommandLineInputText += c;
+                StateHasChanged();
+                await Task.Delay(r.Next(50, 200));
             }
-            else
-            {
-                var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
-                foreach (var c in text)
-                {
-                    CommandLineInputText += c;
-                    StateHasChanged();
-                    await Task.Delay(r.Next(50, 200));
-                }
-                await Task.Delay(400);
-            }
+            await Task.Delay(400);
 
             ExecuteCommand();
         }
