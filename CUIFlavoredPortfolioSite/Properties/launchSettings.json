@@ -19,11 +19,10 @@
     },
     "cui_flavored_portfolio_site": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "applicationUrl": "http://localhost:57528/;https://localhost:57529/",
-      "hotReloadProfile": "blazorwasm",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
