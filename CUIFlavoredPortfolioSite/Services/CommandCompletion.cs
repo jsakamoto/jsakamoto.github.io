@@ -1,44 +1,41 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CUIFlavoredPortfolioSite.Services.CommandSet;
+﻿using CUIFlavoredPortfolioSite.Services.CommandSet;
 
-namespace CUIFlavoredPortfolioSite.Services
+namespace CUIFlavoredPortfolioSite.Services;
+
+public class CommandCompletion
 {
-    public class CommandCompletion
+    private readonly IEnumerable<string> _CommandNames;
+
+    private string[] _LastCandidates = null;
+
+    private int _LastCandidateIndex = -1;
+
+    public CommandCompletion(IEnumerable<ICommand> commands)
     {
-        private readonly IEnumerable<string> _CommandNames;
+        this._CommandNames = commands
+            .SelectMany(cmd => cmd.Names)
+            .OrderBy(name => name)
+            .ToArray();
+    }
 
-        private string[] _LastCandidates = null;
-
-        private int _LastCandidateIndex = -1;
-
-        public CommandCompletion(IEnumerable<ICommand> commands)
+    public string Completion(string commandText)
+    {
+        if (this._LastCandidateIndex >= 0 && this._LastCandidates[this._LastCandidateIndex] == commandText)
         {
-            _CommandNames = commands
-                .SelectMany(cmd => cmd.Names)
-                .OrderBy(name => name)
-                .ToArray();
+            this._LastCandidateIndex = (this._LastCandidateIndex + 1) % this._LastCandidates.Length;
+            return this._LastCandidates[this._LastCandidateIndex];
         }
 
-        public string Completion(string commandText)
+        this._LastCandidates = this._CommandNames
+            .Where(name => name.StartsWith(commandText))
+            .ToArray();
+        this._LastCandidateIndex = this._LastCandidates.Length > 0 ? 0 : -1;
+
+        if (this._LastCandidateIndex == 0)
         {
-            if (_LastCandidateIndex >= 0 && _LastCandidates[_LastCandidateIndex] == commandText)
-            {
-                _LastCandidateIndex = (_LastCandidateIndex + 1) % _LastCandidates.Length;
-                return _LastCandidates[_LastCandidateIndex];
-            }
-
-            _LastCandidates = _CommandNames
-                .Where(name => name.StartsWith(commandText))
-                .ToArray();
-            _LastCandidateIndex = _LastCandidates.Length > 0 ? 0 : -1;
-
-            if (_LastCandidateIndex == 0)
-            {
-                return _LastCandidates[0];
-            }
-
-            return commandText;
+            return this._LastCandidates[0];
         }
+
+        return commandText;
     }
 }

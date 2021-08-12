@@ -1,21 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿namespace CUIFlavoredPortfolioSite.Services.CommandSet;
 
-namespace CUIFlavoredPortfolioSite.Services.CommandSet
+public class CommandSetService : ICommandSet
 {
-    public class CommandSetService : ICommandSet
+    private readonly IEnumerable<ICommand> _Commands;
+
+    public CommandSetService(IEnumerable<ICommand> commands)
     {
-        private readonly IEnumerable<ICommand> _Commands;
+        this._Commands = commands;
+    }
 
-        public CommandSetService(IEnumerable<ICommand> commands)
-        {
-            _Commands = commands;
-        }
-
-        public bool TryGetCommand(string commandName, out ICommand command)
-        {
-            command = _Commands.FirstOrDefault(cmd => cmd.Names.Contains(commandName));
-            return command != null;
-        }
+    public bool TryGetCommand(string commandName, out ICommand command)
+    {
+        command = this._Commands.FirstOrDefault(cmd => cmd.Names.Contains(commandName));
+        return command != null;
     }
 }

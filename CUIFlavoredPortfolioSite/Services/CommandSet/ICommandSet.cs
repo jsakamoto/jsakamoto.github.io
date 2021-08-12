@@ -1,7 +1,6 @@
-﻿namespace CUIFlavoredPortfolioSite.Services.CommandSet
+﻿namespace CUIFlavoredPortfolioSite.Services.CommandSet;
+
+public interface ICommandSet
 {
-    public interface ICommandSet
-    {
-        bool TryGetCommand(string commandName, out ICommand command);
-    }
+    bool TryGetCommand(string commandName, out ICommand command);
 }

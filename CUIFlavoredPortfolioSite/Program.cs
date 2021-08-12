@@ -1,46 +1,41 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using CUIFlavoredPortfolioSite.Commands;
+using CUIFlavoredPortfolioSite.Services;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
-using CUIFlavoredPortfolioSite.Commands;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using CUIFlavoredPortfolioSite.Services;
 
-namespace CUIFlavoredPortfolioSite
+namespace CUIFlavoredPortfolioSite;
+
+public class Program
 {
-    public class Program
+    public static async Task Main(string[] args)
     {
-        public static async Task Main(string[] args)
-        {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("#app");
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("#app");
 
-            ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
+        ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
 
-            await builder.Build().RunAsync();
-        }
+        await builder.Build().RunAsync();
+    }
 
-        public static void ConfigureServices(IServiceCollection services, string baseAddress)
-        {
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseAddress) });
-            services.AddScoped<IConsoleHost, ConsoleHostService>();
-            services.AddScoped<ICommandSet, CommandSetService>();
-            services.AddScoped<CommandCompletion>();
+    public static void ConfigureServices(IServiceCollection services, string baseAddress)
+    {
+        services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseAddress) });
+        services.AddScoped<IConsoleHost, ConsoleHostService>();
+        services.AddScoped<ICommandSet, CommandSetService>();
+        services.AddScoped<CommandCompletion>();
 
-            RegisterCommands(services);
-        }
+        RegisterCommands(services);
+    }
 
-        private static void RegisterCommands(IServiceCollection services)
-        {
-            services.AddScoped<ICommand, ClearCommand>();
-            services.AddScoped<ICommand, HelpCommand>();
-            services.AddScoped<ICommand, FiggleCommand>();
-            services.AddScoped<ICommand, ProfileCommand>();
-            services.AddScoped<ICommand, BannerCommand>();
-            services.AddScoped<ICommand, VersionCommand>();
-            services.AddScoped<ICommand, RuntimeInformationCommand>();
-        }
+    private static void RegisterCommands(IServiceCollection services)
+    {
+        services.AddScoped<ICommand, ClearCommand>();
+        services.AddScoped<ICommand, HelpCommand>();
+        services.AddScoped<ICommand, FiggleCommand>();
+        services.AddScoped<ICommand, ProfileCommand>();
+        services.AddScoped<ICommand, BannerCommand>();
+        services.AddScoped<ICommand, VersionCommand>();
+        services.AddScoped<ICommand, RuntimeInformationCommand>();
     }
 }

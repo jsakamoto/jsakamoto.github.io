@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using CUIFlavoredPortfolioSite.Services.ConsoleHost;
+﻿using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 
-namespace CUIFlavoredPortfolioSite.Services.CommandSet
+namespace CUIFlavoredPortfolioSite.Services.CommandSet;
+
+public interface ICommand
 {
-    public interface ICommand
-    {
-        IEnumerable<string> Names { get; }
+    IEnumerable<string> Names { get; }
 
-        string Description { get; }
+    string Description { get; }
 
-        void Invoke(IConsoleHost consoleHost, string[] args);
-    }
+    void Invoke(IConsoleHost consoleHost, string[] args);
 }
