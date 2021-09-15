@@ -8,6 +8,7 @@
     <Copyright>Copyright (C) J.Sakamoto</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
     <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
