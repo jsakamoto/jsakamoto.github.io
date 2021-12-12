@@ -107,7 +107,7 @@ public partial class App
 
     private void ExecuteCommand()
     {
-        this.ConsoleHost.WriteLine(Green("jsakamoto") + "$ " + this.CommandLineInputText);
+        this.ConsoleHost.WriteLine($"{Green("jsakamoto")}:{Blue(Environment.CurrentDirectory)}$ {this.CommandLineInputText}");
         this.ProcessCommandLine(this.CommandLineInputText);
         this.CommandLineInputText = "";
         this.StateHasChanged();
