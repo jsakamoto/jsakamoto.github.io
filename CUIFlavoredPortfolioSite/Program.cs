@@ -30,4 +30,5 @@ static void RegisterCommands(IServiceCollection services)
     services.AddScoped<ICommand, VersionCommand>();
     services.AddScoped<ICommand, RuntimeInformationCommand>();
     services.AddScoped<ICommand, PwdCommand>();
+    services.AddScoped<ICommand, CdCommand>();
 }
