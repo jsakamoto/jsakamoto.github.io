@@ -32,4 +32,5 @@ static void RegisterCommands(IServiceCollection services)
     services.AddScoped<ICommand, PwdCommand>();
     services.AddScoped<ICommand, CdCommand>();
     services.AddScoped<ICommand, LsCommand>();
+    services.AddScoped<ICommand, MkDirCommand>();
 }
