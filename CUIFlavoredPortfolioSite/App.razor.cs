@@ -79,10 +79,13 @@ public partial class App
     {
         if (!this._Initialized) return;
 
-        switch (e.Key)
+        switch (e.Code)
         {
             case "Enter":
                 this.ExecuteCommand();
+                break;
+            case "KeyL":
+                if (e.CtrlKey) this.ProcessCommandLine("clear", noSaveHistory: true);
                 break;
             case "ArrowUp":
                 this.RecallHistory(this.CommandHistory.TryGetPrevious(out var prevCommand), prevCommand);
@@ -113,9 +116,9 @@ public partial class App
         this.StateHasChanged();
     }
 
-    private void ProcessCommandLine(string commandLineInputText)
+    private void ProcessCommandLine(string commandLineInputText, bool noSaveHistory = false)
     {
-        this.CommandHistory.Push(commandLineInputText);
+        if (!noSaveHistory) this.CommandHistory.Push(commandLineInputText);
 
         if (commandLineInputText != "")
         {
