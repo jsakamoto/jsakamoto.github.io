@@ -19,8 +19,7 @@
     }
 
     document.addEventListener('keydown', e => {
-        console.log(e.key, e.keyCode);
-        if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Tab') {
+        if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'Tab' || (e.code === 'KeyL' && e.ctrlKey)) {
             if ((e.srcElement as HTMLElement).id === 'command-line-input') {
                 e.preventDefault();
             }
