@@ -27,6 +27,7 @@ static void RegisterCommands(IServiceCollection services)
     services.AddScoped<ICommand, FiggleCommand>();
     services.AddScoped<ICommand, ProfileCommand>();
     services.AddScoped<ICommand, BannerCommand>();
+    services.AddScoped<ICommand, NewYearGreetingCommand>();
     services.AddScoped<ICommand, VersionCommand>();
     services.AddScoped<ICommand, RuntimeInformationCommand>();
     services.AddScoped<ICommand, PwdCommand>();

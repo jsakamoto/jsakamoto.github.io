@@ -35,7 +35,8 @@ public partial class App
         await Task.Delay(400);
         if (this.RuntimeMode != RuntimeModes.Debug)
         {
-            await this.TypeAndExecuteCommand("banner");
+            //await this.TypeAndExecuteCommand("banner");
+            await this.TypeAndExecuteCommand("new-year-greeting");
 
             await Task.Delay(400);
             await this.TypeAndExecuteCommand("profile");
