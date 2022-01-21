@@ -12,6 +12,6 @@ public class NewYearGreetingCommand : RainbowBannerCommandBase, ICommand
     public void Invoke(IConsoleHost consoleHost, string[] args)
     {
         this.Render(consoleHost, "Happy");
-        this.Render(consoleHost, "New Year 2022 !");
+        this.Render(consoleHost, $"New Year {DateTime.Now.Year} !");
     }
 }

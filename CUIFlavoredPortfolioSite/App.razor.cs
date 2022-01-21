@@ -35,8 +35,15 @@ public partial class App
         await Task.Delay(400);
         if (this.RuntimeMode != RuntimeModes.Debug)
         {
-            //await this.TypeAndExecuteCommand("banner");
-            await this.TypeAndExecuteCommand("new-year-greeting");
+            var todaysMMDD = DateTime.Now.Month * 100 + DateTime.Now.Day;
+            if (todaysMMDD is >= 101 and <= 115)
+            {
+                await this.TypeAndExecuteCommand("new-year-greeting");
+            }
+            else
+            {
+                await this.TypeAndExecuteCommand("banner");
+            }
 
             await Task.Delay(400);
             await this.TypeAndExecuteCommand("profile");
