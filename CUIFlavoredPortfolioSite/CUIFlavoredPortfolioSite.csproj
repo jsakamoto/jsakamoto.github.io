@@ -24,16 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0-preview.4.22251.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0-preview.4.22251.1" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="7.0.0-preview.4.22229.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0-preview.5.22303.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0-preview.5.22303.8" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0-preview.5.22301.12" />
 
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
     <PackageReference Include="Figgle" Version="0.4.0" />
     <PackageReference Include="BlazorWasmPreRendering.Build" Version="1.0.0-preview.24.0" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.3.6" />
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
