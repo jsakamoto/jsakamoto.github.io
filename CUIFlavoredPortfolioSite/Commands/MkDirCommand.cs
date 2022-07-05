@@ -9,9 +9,9 @@ public class MkDirCommand : ICommand
 
     public string Description => "make directories.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
-        if (args.Length < 2) { consoleHost.WriteLine("mkdir: missing operand"); return; }
+        if (args.Length < 2) { consoleHost.WriteLine("mkdir: missing operand"); return ValueTask.CompletedTask; }
         foreach (var path in args.Skip(1))
         {
             var fullPath = Path.GetFullPath(path);
@@ -20,5 +20,7 @@ public class MkDirCommand : ICommand
 
             Directory.CreateDirectory(fullPath);
         }
+
+        return ValueTask.CompletedTask;
     }
 }

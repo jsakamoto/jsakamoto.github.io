@@ -8,5 +8,5 @@ public interface ICommand
 
     string Description { get; }
 
-    void Invoke(IConsoleHost consoleHost, string[] args);
+    ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken);
 }

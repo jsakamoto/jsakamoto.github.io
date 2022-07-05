@@ -11,7 +11,7 @@ public class VersionCommand : ICommand
 
     public string Description => "show version information of this site.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         var assembly = this.GetType().Assembly;
         var version = assembly.GetName().Version;
@@ -27,5 +27,7 @@ public class VersionCommand : ICommand
         consoleHost.WriteLine(Cyan("Special Thanks to") + " -");
         consoleHost.Write("This project has been started after being inspired by [＠AtriaSoft](https://twitter.com/AtriaSoft)'s ");
         consoleHost.WriteLine("[\"CUIPortfolio\"](https://github.com/Atria64/CUIPortfolio) project.");
+
+        return ValueTask.CompletedTask;
     }
 }

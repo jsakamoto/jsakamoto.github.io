@@ -26,7 +26,7 @@ public class FiggleCommand : ICommand
         public FontNotFoundException(string fontName) : base($"{fontName}: Unable to open font file. (to show available font names, try -h option.)") { }
     }
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         var commandName = args[0];
         try
@@ -35,7 +35,7 @@ public class FiggleCommand : ICommand
             if (args.Skip(1).Any() == false || options.Help)
             {
                 this.Usage(consoleHost, commandName);
-                return;
+                return ValueTask.CompletedTask;
             }
 
             var found = this._Fonts.Value.TryGetValue(options.Font.ToLower(), out var getFont);
@@ -51,6 +51,8 @@ public class FiggleCommand : ICommand
             consoleHost.WriteLine(Yellow(e.Message));
             this.Usage(consoleHost, commandName);
         }
+
+        return ValueTask.CompletedTask;
     }
 
     private void Usage(IConsoleHost consoleHost, string commandName)

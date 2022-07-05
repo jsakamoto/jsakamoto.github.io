@@ -9,11 +9,13 @@ public class ClearCommand : ICommand
 
     public string Description => "clear console.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         if (args.Skip(1).Any())
             consoleHost.WriteLine($"Usage: {args[0]}");
         else
             consoleHost.Clear();
+
+        return ValueTask.CompletedTask;
     }
 }

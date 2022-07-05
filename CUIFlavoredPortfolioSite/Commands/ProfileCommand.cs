@@ -10,12 +10,12 @@ public class ProfileCommand : ICommand
 
     public string Description => "show profile about me.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         if (args.Skip(1).Any())
         {
             consoleHost.WriteLine($"Usage: {args[0]}");
-            return;
+            return ValueTask.CompletedTask;
         }
 
         consoleHost.WriteLine(Cyan("Name") + "      - J.Sakamoto");
@@ -38,5 +38,7 @@ public class ProfileCommand : ICommand
         consoleHost.WriteLine($" - dev.to      - {DarkCyan("[https://dev.to/j_sakamoto](https://dev.to/j_sakamoto)")} {DarkGray(" (English contents)")}");
         consoleHost.WriteLine($" - Qiita       - {DarkCyan("[https://qiita.com/jsakamoto](https://qiita.com/jsakamoto)")} {DarkGray(" (Japanese contents)")}");
         consoleHost.WriteLine($" - excite blog - {DarkCyan("[https://devadjust.exblog.jp/](https://devadjust.exblog.jp/)")} {DarkGray(" (Japanese contents)")}");
+
+        return ValueTask.CompletedTask;
     }
 }

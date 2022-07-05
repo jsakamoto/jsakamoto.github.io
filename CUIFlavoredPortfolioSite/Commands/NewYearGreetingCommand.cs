@@ -9,9 +9,10 @@ public class NewYearGreetingCommand : RainbowBannerCommandBase, ICommand
 
     public string Description => "show new year greeting.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         this.Render(consoleHost, "Happy");
         this.Render(consoleHost, $"New Year {DateTime.Now.Year} !");
+        return ValueTask.CompletedTask;
     }
 }

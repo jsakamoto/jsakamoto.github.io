@@ -11,7 +11,7 @@ public class CommandCompletionTest
     {
         public IEnumerable<string> Names { get; }
         public string Description => throw new NotImplementedException();
-        public void Invoke(IConsoleHost consoleHost, string[] args) => throw new NotImplementedException();
+        public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken) => throw new NotImplementedException();
         public TestCommand(params string[] names) { this.Names = names; }
     }
 

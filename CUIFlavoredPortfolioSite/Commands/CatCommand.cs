@@ -10,7 +10,7 @@ public class CatCommand : ICommand
 
     public string Description => "concatenate files and print on the standard output.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         const int bufferSize = 1024;
         Span<byte> buffer = stackalloc byte[bufferSize];
@@ -29,5 +29,6 @@ public class CatCommand : ICommand
                 if (cbRead < bufferSize) break;
             }
         }
+        return ValueTask.CompletedTask;
     }
 }

@@ -1,6 +1,6 @@
+using System.Collections;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
-using System.Collections;
 
 namespace CUIFlavoredPortfolioSite.Commands;
 
@@ -10,7 +10,7 @@ public class PrintEnvCommand : ICommand
 
     public string Description => "print all or part of environment.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         var envVals = Environment.GetEnvironmentVariables();
 
@@ -29,5 +29,6 @@ public class PrintEnvCommand : ICommand
                 consoleHost.WriteLine(envVals[arg].ToString());
             }
         }
+        return ValueTask.CompletedTask;
     }
 }

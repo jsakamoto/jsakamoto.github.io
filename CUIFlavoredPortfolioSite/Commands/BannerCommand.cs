@@ -9,9 +9,10 @@ public class BannerCommand : RainbowBannerCommandBase, ICommand
 
     public string Description => "show opening banner.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         this.Render(consoleHost, "I'm");
         this.Render(consoleHost, "J.Sakamoto !");
+        return ValueTask.CompletedTask;
     }
 }

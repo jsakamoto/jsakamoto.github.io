@@ -9,8 +9,9 @@ public class PwdCommand : ICommand
 
     public string Description => "print name of current/working directory";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         consoleHost.WriteLine(Environment.CurrentDirectory);
+        return ValueTask.CompletedTask;
     }
 }

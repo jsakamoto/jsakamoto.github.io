@@ -32,28 +32,29 @@ public partial class App
 
     protected override async Task OnInitializedAsync()
     {
+        var cancellationToken = CancellationToken.None;
         await Task.Delay(400);
         if (this.RuntimeMode != RuntimeModes.Debug)
         {
             var todaysMMDD = DateTime.Now.Month * 100 + DateTime.Now.Day;
             if (todaysMMDD is >= 101 and <= 115)
             {
-                await this.TypeAndExecuteCommand("new-year-greeting");
+                await this.TypeAndExecuteCommandAsync("new-year-greeting", cancellationToken);
             }
             else
             {
-                await this.TypeAndExecuteCommand("banner");
+                await this.TypeAndExecuteCommandAsync("banner", cancellationToken);
             }
 
             await Task.Delay(400);
-            await this.TypeAndExecuteCommand("profile");
+            await this.TypeAndExecuteCommandAsync("profile", cancellationToken);
         }
 
         this._Initialized = true;
         this.StateHasChanged();
     }
 
-    private async Task TypeAndExecuteCommand(string text)
+    private async Task TypeAndExecuteCommandAsync(string text, CancellationToken cancellationToken)
     {
         var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
         foreach (var c in text)
@@ -64,7 +65,7 @@ public partial class App
         }
         await Task.Delay(400);
 
-        this.ExecuteCommand();
+        await this.ExecuteCommandAsync(cancellationToken);
     }
 
     private string GetTwitterShareButtonUrl()
@@ -83,17 +84,18 @@ public partial class App
         await this.JS.InvokeVoidAsync("Helper.scrollIntoView", this.CommandLineInput);
     }
 
-    private void OnKeyDownCommandLineInput(KeyboardEventArgs e)
+    private async Task OnKeyDownCommandLineInput(KeyboardEventArgs e)
     {
         if (!this._Initialized) return;
+        var cancelationToken = CancellationToken.None;
 
         switch (e.Code)
         {
             case "Enter":
-                this.ExecuteCommand();
+                await this.ExecuteCommandAsync(cancelationToken);
                 break;
             case "KeyL":
-                if (e.CtrlKey) this.ProcessCommandLine("clear", noSaveHistory: true);
+                if (e.CtrlKey) await this.ProcessCommandLineAsync("clear", cancelationToken, noSaveHistory: true);
                 break;
             case "ArrowUp":
                 this.RecallHistory(this.CommandHistory.TryGetPrevious(out var prevCommand), prevCommand);
@@ -116,15 +118,15 @@ public partial class App
         this.StateHasChanged();
     }
 
-    private void ExecuteCommand()
+    private async ValueTask ExecuteCommandAsync(CancellationToken cancellationToken)
     {
         this.ConsoleHost.WriteLine($"{Green("jsakamoto")}:{Blue(Environment.CurrentDirectory)}$ {this.CommandLineInputText}");
-        this.ProcessCommandLine(this.CommandLineInputText);
+        await this.ProcessCommandLineAsync(this.CommandLineInputText, cancellationToken);
         this.CommandLineInputText = "";
         this.StateHasChanged();
     }
 
-    private void ProcessCommandLine(string commandLineInputText, bool noSaveHistory = false)
+    private async ValueTask ProcessCommandLineAsync(string commandLineInputText, CancellationToken cancellationToken, bool noSaveHistory = false)
     {
         if (!noSaveHistory) this.CommandHistory.Push(commandLineInputText);
 
@@ -136,7 +138,7 @@ public partial class App
             {
                 try
                 {
-                    command.Invoke(this.ConsoleHost, commandArgs);
+                    await command.InvokeAsync(this.ConsoleHost, commandArgs, cancellationToken);
                 }
                 catch (Exception e)
                 {

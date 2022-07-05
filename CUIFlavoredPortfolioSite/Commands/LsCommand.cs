@@ -10,7 +10,7 @@ public class LsCommand : ICommand
 
     public string Description => "list directory contents.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         var pathCollection = args.Skip(1).Where(p => !string.IsNullOrEmpty(p));
         if (!pathCollection.Any()) pathCollection = pathCollection.Append(Path.Combine(Environment.CurrentDirectory, "*.*"));
@@ -42,5 +42,7 @@ public class LsCommand : ICommand
 
             firstEntry = false;
         }
+
+        return ValueTask.CompletedTask;
     }
 }

@@ -11,7 +11,7 @@ public class RuntimeInformationCommand : ICommand
 
     public string Description => "show runtime information of this app.";
 
-    public void Invoke(IConsoleHost consoleHost, string[] args)
+    public ValueTask InvokeAsync(IConsoleHost consoleHost, string[] args, CancellationToken cancellationToken)
     {
         consoleHost.WriteLine($"{Cyan("Framework Description")}  - {RuntimeInformation.FrameworkDescription}");
         consoleHost.WriteLine($"{Cyan("Process Architecture")}   - {RuntimeInformation.ProcessArchitecture}");
@@ -20,5 +20,7 @@ public class RuntimeInformationCommand : ICommand
         consoleHost.WriteLine($"{Cyan("OS Platform")}            - {Environment.OSVersion.Platform}");
         consoleHost.WriteLine($"{Cyan("OS Version")}             - {Environment.OSVersion.Version}");
         consoleHost.WriteLine($"{Cyan("OS Version ServicePack")} - {Environment.OSVersion.ServicePack}");
+
+        return ValueTask.CompletedTask;
     }
 }
