@@ -1,11 +1,13 @@
 ﻿@inject IConsoleHost ConsoleHost
+@inject IScreenMetrics ScreenMetrics
+
 <div class="console-component">
     @foreach (var line in ConsoleHost.Lines)
     {
         <div @key="line.Id" class="console-line">
             @foreach (var fragment in line.Fragments)
             {
-                <span @key="fragment.Id" class="console-fragment" style="color:@ForeColorOf(fragment)">
+                <span @key="fragment.Id" class="@CssClass("console-fragment", new { fragment.NoWrap })" style="color:@ForeColorOf(fragment); margin-left:@MarginLeftOf(fragment)px">
                     @if (fragment.Link == null)
                     {
                         @fragment.Text

@@ -13,6 +13,11 @@ public class ConsoleLine
         this.Id = id;
     }
 
+    public void AddFragment(ConsoleFragment fragment)
+    {
+        this._Fragments.Add(fragment);
+    }
+
     public void AddFragments(IEnumerable<ConsoleFragment> fragments)
     {
         this._Fragments.AddRange(fragments);

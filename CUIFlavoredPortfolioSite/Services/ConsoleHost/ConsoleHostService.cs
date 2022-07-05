@@ -14,7 +14,12 @@ public class ConsoleHostService : IConsoleHost
 
     private int _IdSequence = 0;
 
-    public event EventHandler StateHasChanged;
+    public event EventHandler StateChanged;
+
+    public void StateHasChanged()
+    {
+        StateChanged?.Invoke(this, EventArgs.Empty);
+    }
 
     public IConsoleHost Write(string text)
     {
@@ -29,7 +34,7 @@ public class ConsoleHostService : IConsoleHost
             this._CurrentLine.AddFragments(this.CreateFragments(lines[l]));
         }
 
-        StateHasChanged?.Invoke(this, EventArgs.Empty);
+        this.StateHasChanged();
         return this;
     }
 
@@ -47,21 +52,28 @@ public class ConsoleHostService : IConsoleHost
         }
 
         this._CurrentLine = null;
-        StateHasChanged?.Invoke(this, EventArgs.Empty);
+        this.StateHasChanged();
         return this;
     }
 
-    private ConsoleLine NewLine()
+    public ConsoleLine NewLine()
     {
         var line = new ConsoleLine(this._IdSequence++);
         this._Lines.Add(line);
         return line;
     }
 
+    public void RemoveLines(int lastNLine)
+    {
+        var index = Math.Max(0, this._Lines.Count - lastNLine);
+        var count = Math.Min(this._Lines.Count, lastNLine);
+        this._Lines.RemoveRange(index, count);
+    }
+
     public void Clear()
     {
         this._Lines.Clear();
-        StateHasChanged?.Invoke(this, EventArgs.Empty);
+        this.StateHasChanged();
     }
 
     private IEnumerable<ConsoleFragment> CreateFragments(string text)

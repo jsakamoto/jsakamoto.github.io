@@ -28,6 +28,8 @@ public partial class App
 
     private CommandHistory CommandHistory { get; } = new CommandHistory();
 
+    private bool CommandProcessing = false;
+
     private bool _Initialized = false;
 
     protected override async Task OnInitializedAsync()
@@ -138,12 +140,14 @@ public partial class App
             {
                 try
                 {
+                    this.CommandProcessing = true;
                     await command.InvokeAsync(this.ConsoleHost, commandArgs, cancellationToken);
                 }
                 catch (Exception e)
                 {
                     this.ConsoleHost.WriteLine(Red(e.ToString()));
                 }
+                finally { this.CommandProcessing = false; }
             }
             else
             {

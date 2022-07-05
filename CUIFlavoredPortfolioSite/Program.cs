@@ -3,6 +3,7 @@ using CUIFlavoredPortfolioSite.Commands;
 using CUIFlavoredPortfolioSite.Services;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
+using CUIFlavoredPortfolioSite.Services.ScreenMetrics;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -13,6 +14,7 @@ await builder.Build().RunAsync();
 static void ConfigureServices(IServiceCollection services, string baseAddress)
 {
     services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseAddress) });
+    services.AddScoped<IScreenMetrics, ScreenMetricsService>();
     services.AddScoped<IConsoleHost, ConsoleHostService>();
     services.AddScoped<ICommandSet, CommandSetService>();
     services.AddScoped<CommandCompletion>();

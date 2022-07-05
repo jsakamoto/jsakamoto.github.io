@@ -34,6 +34,10 @@ footer {
 .command-line-input {
     display: flex;
 
+    &.command-processing {
+        visibility: hidden;
+    }
+
     .prompt-user-name {
         color: #16c60c;
     }

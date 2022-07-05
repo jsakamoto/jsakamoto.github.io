@@ -1,5 +1,7 @@
 ﻿.console-component {
     .console-line {
+        overflow: hidden;
+        white-space: nowrap;
         word-break: break-all;
 
         &:before {
@@ -9,6 +11,10 @@
 
         .console-fragment {
             white-space: pre-wrap;
+
+            &.no-wrap {
+                white-space: pre;
+            }
 
             a {
                 color: inherit;

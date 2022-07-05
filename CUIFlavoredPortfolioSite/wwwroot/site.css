@@ -124,6 +124,9 @@ footer .twitter-share-button {
 .command-line-input {
   display: flex;
 }
+.command-line-input.command-processing {
+  visibility: hidden;
+}
 .command-line-input .prompt-user-name {
   color: #16c60c;
 }
@@ -145,6 +148,8 @@ footer .twitter-share-button {
 }
 
 .console-component .console-line {
+  overflow: hidden;
+  white-space: nowrap;
   word-break: break-all;
 }
 .console-component .console-line:before {
@@ -153,6 +158,9 @@ footer .twitter-share-button {
 }
 .console-component .console-line .console-fragment {
   white-space: pre-wrap;
+}
+.console-component .console-line .console-fragment.no-wrap {
+  white-space: pre;
 }
 .console-component .console-line .console-fragment a {
   color: inherit;
