@@ -3,6 +3,21 @@
         element.scrollIntoView();
     }
 
+    export function getScreenMetrics() {
+
+        const span = document.createElement('span');
+        span.innerText = '_';
+        span.style.position = 'fixed';
+        span.style.visibility = 'hidden';
+        document.body.appendChild(span);
+        const charWidthPx = span.offsetWidth;
+        span.remove();
+
+        const screenWidthChar = Math.floor( document.body.clientWidth / charWidthPx);
+
+        return { charWidthPx, screenWidthChar };
+    }
+
     let timerId: number | null = null;
 
     window.addEventListener("mouseup", function (event) {

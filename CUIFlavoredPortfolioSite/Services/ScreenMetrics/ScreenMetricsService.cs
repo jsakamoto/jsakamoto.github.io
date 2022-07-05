@@ -13,7 +13,6 @@ public class ScreenMetricsService : IScreenMetrics
 
 	public ValueTask<Metrics> GetMetricsAsync()
 	{
-		return new ValueTask<Metrics>(new Metrics(9, 80));
-		//return this._JSRuntime.InvokeAsync<Metrics>("getScreenMetrics");
+		return this._JSRuntime.InvokeAsync<Metrics>("Helper.getScreenMetrics");
 	}
 }

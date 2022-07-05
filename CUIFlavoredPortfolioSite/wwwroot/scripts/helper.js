@@ -5,6 +5,18 @@ var Helper;
         element.scrollIntoView();
     }
     Helper.scrollIntoView = scrollIntoView;
+    function getScreenMetrics() {
+        var span = document.createElement('span');
+        span.innerText = '_';
+        span.style.position = 'fixed';
+        span.style.visibility = 'hidden';
+        document.body.appendChild(span);
+        var charWidthPx = span.offsetWidth;
+        span.remove();
+        var screenWidthChar = Math.floor(document.body.clientWidth / charWidthPx);
+        return { charWidthPx: charWidthPx, screenWidthChar: screenWidthChar };
+    }
+    Helper.getScreenMetrics = getScreenMetrics;
     var timerId = null;
     window.addEventListener("mouseup", function (event) {
         if (timerId !== null)
