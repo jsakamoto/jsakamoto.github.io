@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
+using Toolbelt.Blazor.HotKeys;
 using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite;
 
-public partial class App
+public partial class App : IDisposable
 {
     public enum RuntimeModes
     {
@@ -32,31 +33,34 @@ public partial class App
 
     private bool _Initialized = false;
 
+    private HotKeysContext _HotKeysContext;
+
     protected override async Task OnInitializedAsync()
     {
-        var cancellationToken = CancellationToken.None;
+        this._HotKeysContext = this.HotKeys.CreateContext().Add(ModKeys.Ctrl, Keys.C, () => this.OnCtrlC());
+
         await Task.Delay(400);
         if (this.RuntimeMode != RuntimeModes.Debug)
         {
             var todaysMMDD = DateTime.Now.Month * 100 + DateTime.Now.Day;
             if (todaysMMDD is >= 101 and <= 115)
             {
-                await this.TypeAndExecuteCommandAsync("new-year-greeting", cancellationToken);
+                await this.TypeAndExecuteCommandAsync("new-year-greeting");
             }
             else
             {
-                await this.TypeAndExecuteCommandAsync("banner", cancellationToken);
+                await this.TypeAndExecuteCommandAsync("banner");
             }
 
             await Task.Delay(400);
-            await this.TypeAndExecuteCommandAsync("profile", cancellationToken);
+            await this.TypeAndExecuteCommandAsync("profile");
         }
 
         this._Initialized = true;
         this.StateHasChanged();
     }
 
-    private async Task TypeAndExecuteCommandAsync(string text, CancellationToken cancellationToken)
+    private async Task TypeAndExecuteCommandAsync(string text)
     {
         var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
         foreach (var c in text)
@@ -67,7 +71,7 @@ public partial class App
         }
         await Task.Delay(400);
 
-        await this.ExecuteCommandAsync(cancellationToken);
+        await this.ExecuteCommandAsync();
     }
 
     private string GetTwitterShareButtonUrl()
@@ -86,18 +90,22 @@ public partial class App
         await this.JS.InvokeVoidAsync("Helper.scrollIntoView", this.CommandLineInput);
     }
 
+    private void OnCtrlC()
+    {
+        this._CommandCanceller?.Cancel();
+    }
+
     private async Task OnKeyDownCommandLineInput(KeyboardEventArgs e)
     {
         if (!this._Initialized) return;
-        var cancelationToken = CancellationToken.None;
 
         switch (e.Code)
         {
             case "Enter":
-                await this.ExecuteCommandAsync(cancelationToken);
+                await this.ExecuteCommandAsync();
                 break;
             case "KeyL":
-                if (e.CtrlKey) await this.ProcessCommandLineAsync("clear", cancelationToken, noSaveHistory: true);
+                if (e.CtrlKey) await this.ProcessCommandLineAsync("clear", noSaveHistory: true);
                 break;
             case "ArrowUp":
                 this.RecallHistory(this.CommandHistory.TryGetPrevious(out var prevCommand), prevCommand);
@@ -120,16 +128,21 @@ public partial class App
         this.StateHasChanged();
     }
 
-    private async ValueTask ExecuteCommandAsync(CancellationToken cancellationToken)
+    private async ValueTask ExecuteCommandAsync()
     {
         this.ConsoleHost.WriteLine($"{Green("jsakamoto")}:{Blue(Environment.CurrentDirectory)}$ {this.CommandLineInputText}");
-        await this.ProcessCommandLineAsync(this.CommandLineInputText, cancellationToken);
+        await this.ProcessCommandLineAsync(this.CommandLineInputText);
         this.CommandLineInputText = "";
         this.StateHasChanged();
     }
 
-    private async ValueTask ProcessCommandLineAsync(string commandLineInputText, CancellationToken cancellationToken, bool noSaveHistory = false)
+    private CancellationTokenSource _CommandCanceller;
+
+    private async ValueTask ProcessCommandLineAsync(string commandLineInputText, bool noSaveHistory = false)
     {
+        this._CommandCanceller?.Dispose();
+        this._CommandCanceller = new CancellationTokenSource();
+
         if (!noSaveHistory) this.CommandHistory.Push(commandLineInputText);
 
         if (commandLineInputText != "")
@@ -141,13 +154,20 @@ public partial class App
                 try
                 {
                     this.CommandProcessing = true;
-                    await command.InvokeAsync(this.ConsoleHost, commandArgs, cancellationToken);
+                    await command.InvokeAsync(this.ConsoleHost, commandArgs, this._CommandCanceller.Token);
                 }
                 catch (Exception e)
                 {
                     this.ConsoleHost.WriteLine(Red(e.ToString()));
                 }
-                finally { this.CommandProcessing = false; }
+                finally
+                {
+                    this.CommandProcessing = false;
+                    if (this._CommandCanceller?.IsCancellationRequested == true)
+                    {
+                        this.ConsoleHost.WriteLine("^C");
+                    }
+                }
             }
             else
             {
@@ -156,5 +176,10 @@ public partial class App
 
             this.ConsoleHost.WriteLine();
         }
+    }
+
+    public void Dispose()
+    {
+        this._HotKeysContext?.Dispose();
     }
 }

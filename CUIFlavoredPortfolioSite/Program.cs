@@ -5,6 +5,7 @@ using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using CUIFlavoredPortfolioSite.Services.ScreenMetrics;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -18,6 +19,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
     services.AddScoped<IConsoleHost, ConsoleHostService>();
     services.AddScoped<ICommandSet, CommandSetService>();
     services.AddScoped<CommandCompletion>();
+    services.AddHotKeys();
 
     RegisterCommands(services);
 }
