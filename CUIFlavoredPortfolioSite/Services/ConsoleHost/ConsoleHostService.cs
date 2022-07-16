@@ -4,6 +4,9 @@ namespace CUIFlavoredPortfolioSite.Services.ConsoleHost;
 
 public class ConsoleHostService : IConsoleHost
 {
+    private const int MAX_LINES = 1000;
+    private const int MAX_LINES_BUFFER = 100;
+
     private readonly List<ConsoleLine> _Lines = new List<ConsoleLine>();
 
     public IEnumerable<ConsoleLine> Lines => this._Lines;
@@ -58,6 +61,12 @@ public class ConsoleHostService : IConsoleHost
 
     public ConsoleLine NewLine()
     {
+        if (this._Lines.Count > MAX_LINES)
+        {
+            var count = Math.Max(0, this._Lines.Count - MAX_LINES - MAX_LINES_BUFFER);
+            this._Lines.RemoveRange(0, count);
+        }
+
         var line = new ConsoleLine(this._IdSequence++);
         this._Lines.Add(line);
         return line;
