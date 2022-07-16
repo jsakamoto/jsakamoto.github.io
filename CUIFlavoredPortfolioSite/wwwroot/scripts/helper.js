@@ -1,8 +1,10 @@
 "use strict";
 var Helper;
 (function (Helper) {
-    function scrollIntoView(element) {
-        element.scrollIntoView();
+    function scrollIntoView(element, alignToTop) {
+        if (typeof (alignToTop) === 'undefined')
+            alignToTop = true;
+        element.scrollIntoView(alignToTop);
     }
     Helper.scrollIntoView = scrollIntoView;
     function getScreenMetrics() {

@@ -1,6 +1,7 @@
 ﻿namespace Helper {
-    export function scrollIntoView(element: HTMLElement): void {
-        element.scrollIntoView();
+    export function scrollIntoView(element: HTMLElement, alignToTop?: boolean): void {
+        if (typeof (alignToTop) === 'undefined') alignToTop = true;
+        element.scrollIntoView(alignToTop);
     }
 
     export function getScreenMetrics() {
