@@ -1,5 +1,4 @@
 ﻿using CUIFlavoredPortfolioSite;
-using CUIFlavoredPortfolioSite.Commands;
 using CUIFlavoredPortfolioSite.Services;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
@@ -26,19 +25,11 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
 
 static void RegisterCommands(IServiceCollection services)
 {
-    services.AddScoped<ICommand, ClearCommand>();
-    services.AddScoped<ICommand, HelpCommand>();
-    services.AddScoped<ICommand, FiggleCommand>();
-    services.AddScoped<ICommand, ProfileCommand>();
-    services.AddScoped<ICommand, BannerCommand>();
-    services.AddScoped<ICommand, NewYearGreetingCommand>();
-    services.AddScoped<ICommand, VersionCommand>();
-    services.AddScoped<ICommand, RuntimeInformationCommand>();
-    services.AddScoped<ICommand, PwdCommand>();
-    services.AddScoped<ICommand, CdCommand>();
-    services.AddScoped<ICommand, LsCommand>();
-    services.AddScoped<ICommand, MkDirCommand>();
-    services.AddScoped<ICommand, CatCommand>();
-    services.AddScoped<ICommand, PrintEnvCommand>();
-    services.AddScoped<ICommand, SlCommand>();
+    var commandTypes = typeof(Program).Assembly
+        .GetTypes()
+        .Where(t => t.GetInterfaces().Contains(typeof(ICommand)));
+    foreach (var commandType in commandTypes)
+    {
+        services.AddScoped(typeof(ICommand), commandType);
+    }
 }
