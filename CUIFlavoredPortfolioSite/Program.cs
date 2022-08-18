@@ -19,6 +19,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
     services.AddScoped<ICommandSet, CommandSetService>();
     services.AddScoped<CommandCompletion>();
     services.AddHotKeys();
+    services.AddPWAUpdater();
 
     RegisterCommands(services);
 }
