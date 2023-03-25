@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using Toolbelt.Blazor.HotKeys;
+using Toolbelt.Blazor.HotKeys2;
 using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite;
@@ -37,7 +37,7 @@ public partial class App : IDisposable
 
     protected override async Task OnInitializedAsync()
     {
-        this._HotKeysContext = this.HotKeys.CreateContext().Add(ModKeys.Ctrl, Keys.C, () => this.OnCtrlC());
+        this._HotKeysContext = this.HotKeys.CreateContext().Add(ModCode.Ctrl, Code.C, () => this.OnCtrlC());
 
         await Task.Delay(400);
         if (this.RuntimeMode != RuntimeModes.Debug)
