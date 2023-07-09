@@ -10,14 +10,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-
-    <!-- 
-    Since .NET 8 SDK Preview 5, webcil format is enabled by default. 
-    However, BlazorWasmPreRendering.Build doesn't support Webcil format yet, 
-    so we have to disable webcli explicitly for the time being. 
-    -->
-    <WasmEnableWebcil>false</WasmEnableWebcil>
-
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -37,14 +29,14 @@
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0-preview.5.23280.8" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
-    <PackageReference Include="BlazorWasmPreRendering.Build" Version="2.0.0-preview.9" />
-    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.0.2" />
+    <PackageReference Include="BlazorWasmPreRendering.Build" Version="3.0.0-preview.1" />
+    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
-    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="1.0.0" />
+    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="2.0.0-preview.1" />
     <PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
     <PackageReference Include="Toolbelt.Web.CssClassInlineBuilder" Version="2.0.0" />
   </ItemGroup>
