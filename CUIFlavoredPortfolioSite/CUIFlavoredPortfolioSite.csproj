@@ -24,19 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.1.23421.29" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-rc.1.23421.29" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="8.0.0-rc.1.23419.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.2.23480.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-rc.2.23480.2" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.0-rc.2.23479.6" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
-    <PackageReference Include="BlazorWasmPreRendering.Build" Version="3.1.0-preview.3" />
+    <PackageReference Include="BlazorWasmPreRendering.Build" Version="3.1.0-preview.4" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
-    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="3.0.0" />
+    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="3.1.0" />
     <PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
     <PackageReference Include="Toolbelt.Web.CssClassInlineBuilder" Version="2.0.0" />
   </ItemGroup>
