@@ -7,7 +7,7 @@ using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite;
 
-public partial class App : IDisposable
+public partial class App : IAsyncDisposable
 {
     public enum RuntimeModes
     {
@@ -178,8 +178,9 @@ public partial class App : IDisposable
         }
     }
 
-    public void Dispose()
+    public async ValueTask DisposeAsync()
     {
-        this._HotKeysContext?.Dispose();
+        GC.SuppressFinalize(this);
+        if (this._HotKeysContext is not null) await this._HotKeysContext.DisposeAsync();
     }
 }
