@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0-preview.4.24267.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0-preview.4.24267.6" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="9.0.0-preview.4.24266.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0-preview.5.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0-preview.5.*" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="9.0.0-preview.5.*" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
     <PackageReference Include="BlazorWasmPreRendering.Build" Version="5.0.0-preview.1" />
