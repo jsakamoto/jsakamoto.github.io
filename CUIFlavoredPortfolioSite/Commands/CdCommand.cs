@@ -1,9 +1,10 @@
-﻿using CUIFlavoredPortfolioSite.Services.CommandSet;
+﻿using CUIFlavoredPortfolioSite.Services;
+using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 
 namespace CUIFlavoredPortfolioSite.Commands;
 
-public class CdCommand : ICommand
+public class CdCommand(PathUtility pathUtility) : ICommand
 {
     public IEnumerable<string> Names { get; } = new[] { "cd" };
 
@@ -13,7 +14,7 @@ public class CdCommand : ICommand
     {
         if (args.Length < 2) return ValueTask.CompletedTask;
         var path = args[1];
-        var fullPath = Path.GetFullPath(path);
+        var fullPath = Path.GetFullPath(pathUtility.RevertUserHomePath(path));
         if (!Directory.Exists(fullPath))
         {
             consoleHost.WriteLine($"cd: {path}: No such file or directory");

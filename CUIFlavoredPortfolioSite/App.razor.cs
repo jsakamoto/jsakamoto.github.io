@@ -7,7 +7,7 @@ using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite;
 
-public partial class App : IAsyncDisposable
+public partial class App(PathUtility pathUtility) : IAsyncDisposable
 {
     public enum RuntimeModes
     {
@@ -22,6 +22,8 @@ public partial class App : IAsyncDisposable
 #else
             = RuntimeModes.Debug;
 #endif
+
+    private readonly PathUtility PathUtility = pathUtility;
 
     private ElementReference CommandLineInput;
 
@@ -130,7 +132,7 @@ public partial class App : IAsyncDisposable
 
     private async ValueTask ExecuteCommandAsync()
     {
-        this.ConsoleHost.WriteLine($"{Green("jsakamoto")}:{Blue(Environment.CurrentDirectory)}$ {this.CommandLineInputText}");
+        this.ConsoleHost.WriteLine($"{Green("jsakamoto")}:{Blue(this.PathUtility.GetCurrentDirectoryDisplayText())}$ {this.CommandLineInputText}");
         await this.ProcessCommandLineAsync(this.CommandLineInputText);
         this.CommandLineInputText = "";
         this.StateHasChanged();

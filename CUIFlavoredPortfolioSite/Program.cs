@@ -9,6 +9,7 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 ConfigureServices(builder.Services, builder.HostEnvironment.BaseAddress);
+ConfigureEnvironment();
 await builder.Build().RunAsync();
 
 static void ConfigureServices(IServiceCollection services, string baseAddress)
@@ -18,6 +19,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
     services.AddScoped<IConsoleHost, ConsoleHostService>();
     services.AddScoped<ICommandSet, CommandSetService>();
     services.AddScoped<CommandCompletion>();
+    services.AddScoped<PathUtility>();
     services.AddHotKeys2();
     services.AddPWAUpdater();
 
@@ -33,4 +35,14 @@ static void RegisterCommands(IServiceCollection services)
     {
         services.AddScoped(typeof(ICommand), commandType);
     }
+}
+
+static void ConfigureEnvironment()
+{
+    Directory.CreateDirectory("/home/jsakamoto");
+    Directory.Delete("/home/web_user", true);
+    Environment.SetEnvironmentVariable("LOGNAME", "jsakamoto");
+    Environment.SetEnvironmentVariable("USER", "jsakamoto");
+    Environment.SetEnvironmentVariable("HOME", "/home/jsakamoto");
+    Environment.CurrentDirectory = "/home/jsakamoto";
 }

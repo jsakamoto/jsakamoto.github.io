@@ -12,7 +12,7 @@
     <div class="@CssClass("command-line-input", new { CommandProcessing })">
         <span class="prompt-user-name">jsakamoto</span>
         <span class="prompt-separator">:</span>
-        <span class="prompt-current-dir">@Environment.CurrentDirectory</span>
+        <span class="prompt-current-dir">@this.PathUtility.GetCurrentDirectoryDisplayText()</span>
         <span class="prompt">$</span>
         <span class="input">
             <input id="command-line-input"
