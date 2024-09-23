@@ -30,8 +30,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="9.0.0-rc.1.24431.7" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
-    <PackageReference Include="BlazorWasmPreRendering.Build" Version="5.0.0-preview.1" />
-    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.2.1-preview.2" />
+    <PackageReference Include="BlazorWasmPreRendering.Build" Version="5.0.0-preview.2" />
+    <PackageReference Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
