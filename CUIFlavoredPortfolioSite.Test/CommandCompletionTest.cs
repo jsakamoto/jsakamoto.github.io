@@ -1,7 +1,7 @@
 ﻿using CUIFlavoredPortfolioSite.Services;
 using CUIFlavoredPortfolioSite.Services.CommandSet;
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
-using Xunit;
+using NUnit.Framework;
 
 namespace CUIFlavoredPortfolioSite.Test;
 
@@ -22,7 +22,7 @@ public class CommandCompletionTest
             new TestCommand("banner"),
         };
 
-    [Fact]
+    [Test]
     public void Completion_NoMatch_Test()
     {
         var completion = new CommandCompletion(this._TestCommands);
@@ -30,7 +30,7 @@ public class CommandCompletionTest
         completion.Completion("foo").Is("foo");
     }
 
-    [Fact]
+    [Test]
     public void Completion_FromEmpty_Test()
     {
         var completion = new CommandCompletion(this._TestCommands);
@@ -44,7 +44,7 @@ public class CommandCompletionTest
         completion.Completion("banner").Is("clear");
     }
 
-    [Fact]
+    [Test]
     public void Completion_FromEmpty_to_NoMatch_Test()
     {
         var completion = new CommandCompletion(this._TestCommands);
@@ -54,7 +54,7 @@ public class CommandCompletionTest
         completion.Completion("bar").Is("bar");
     }
 
-    [Fact]
+    [Test]
     public void Completion_FromEmpty_to_AnotherMatch_Test()
     {
         var completion = new CommandCompletion(this._TestCommands);
@@ -73,7 +73,7 @@ public class CommandCompletionTest
         completion.Completion("banner").Is("clear");
     }
 
-    [Fact]
+    [Test]
     public void Completion_Match_to_AnotherMatch_Test()
     {
         var completion = new CommandCompletion(this._TestCommands);

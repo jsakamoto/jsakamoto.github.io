@@ -1,11 +1,11 @@
 ﻿using CUIFlavoredPortfolioSite.Services;
-using Xunit;
+using NUnit.Framework;
 
 namespace CUIFlavoredPortfolioSite.Test;
 
 public class CommandHistoryTest
 {
-    [Fact]
+    [Test]
     public void PrevNext_on_EmptyBuff_Test()
     {
         var commandHistory = new CommandHistory();
@@ -13,7 +13,7 @@ public class CommandHistoryTest
         commandHistory.TryGetPrevious(out var _).Is(false);
     }
 
-    [Fact]
+    [Test]
     public void Push_EmptyCommand_Test()
     {
         var commandHistory = new CommandHistory();
@@ -26,7 +26,7 @@ public class CommandHistoryTest
         commandHistory.TryGetNext(out var _).Is(false);
     }
 
-    [Fact]
+    [Test]
     public void PushNextPrev_Combo_Test()
     {
         var commandHistory = new CommandHistory();
@@ -38,7 +38,7 @@ public class CommandHistoryTest
         c1.Is("foo -b");
     }
 
-    [Fact]
+    [Test]
     public void Push_and_PrevNext_Test()
     {
         var commandHistory = new CommandHistory();
@@ -85,7 +85,7 @@ public class CommandHistoryTest
         c12.Is("foo -b");
     }
 
-    [Fact]
+    [Test]
     public void BufferOverflow_Test()
     {
         var commandHistory = new CommandHistory { HistoryBuffSize = 3 };

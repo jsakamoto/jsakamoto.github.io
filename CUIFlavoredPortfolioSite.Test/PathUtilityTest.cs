@@ -1,11 +1,11 @@
 ﻿using CUIFlavoredPortfolioSite.Services;
-using Xunit;
+using NUnit.Framework;
 
 namespace CUIFlavoredPortfolioSite.Test;
 
 public class PathUtilityTest
 {
-    [Fact]
+    [Test]
     public void ReplaceUserHomePath_Test()
     {
         // Given
@@ -24,13 +24,13 @@ public class PathUtilityTest
         pathUtility.ReplaceUserHomePath("/home/web_user12").Is("/home/web_user12");
     }
 
-    [Fact]
+    [Test]
     public void RevertUserHomePath_Test()
     {
         // Given
         Environment.SetEnvironmentVariable("HOME", "/home/web_user1");
         var pathUtility = new PathUtility();
-     
+
         // When & Then ...
         pathUtility.RevertUserHomePath("/home/foo").Is("/home/foo");
         pathUtility.RevertUserHomePath("~").Is("/home/web_user1");

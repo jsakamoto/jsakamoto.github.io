@@ -1,13 +1,13 @@
 using CUIFlavoredPortfolioSite.Services.ConsoleHost;
 using CUIFlavoredPortfolioSite.Test.Internals;
-using Xunit;
+using NUnit.Framework;
 using static Toolbelt.AnsiEscCode.Colorize;
 
 namespace CUIFlavoredPortfolioSite.Test;
 
 public class ConsoleHostServiceTest
 {
-    [Fact]
+    [Test]
     public void Write_Test()
     {
         var host = new ConsoleHostService();
@@ -28,7 +28,7 @@ public class ConsoleHostServiceTest
             "t:Buzz,f:#cccccc|t:FizzBuzz,f:#cccccc");
     }
 
-    [Fact]
+    [Test]
     public void WriteLine_Test()
     {
         var host = new ConsoleHostService();
@@ -61,7 +61,7 @@ public class ConsoleHostServiceTest
             "t:Ipsum,f:#cccccc");
     }
 
-    [Fact]
+    [Test]
     public void Clear_Test()
     {
         var host = new ConsoleHostService();
@@ -75,7 +75,7 @@ public class ConsoleHostServiceTest
         host.Lines.Dump().Is("t:Fizz");
     }
 
-    [Fact]
+    [Test]
     public void CorlorizeToFragments_Test()
     {
         var host = new ConsoleHostService();
@@ -91,7 +91,7 @@ public class ConsoleHostServiceTest
             "t:Lorem ipsum dolor sit,f:#cccccc");
     }
 
-    [Fact]
+    [Test]
     public void HyperLinkFragments_Test()
     {
         var host = new ConsoleHostService();
