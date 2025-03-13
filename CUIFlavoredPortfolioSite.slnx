@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/README/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path="THIRD-PARTY-NOTICES.txt" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="THIRD-PARTY-NOTICES.txt" />
+  </Folder>
+  <Project Path="CUIFlavoredPortfolioSite.Test/CUIFlavoredPortfolioSite.Test.csproj" />
+  <Project Path="CUIFlavoredPortfolioSite/CUIFlavoredPortfolioSite.csproj" />
+</Solution>
