@@ -8,7 +8,13 @@
     <Copyright>Copyright (C) J.Sakamoto</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <!--
+    Since .NET 10 Preview 3, we need to temporarily disable the "InvariantGlobalization" setting 
+    to avoid the exception: "ZLibException: The underlying compression routine could not be loaded correctly."
+    -->
+    <!--<InvariantGlobalization>true</InvariantGlobalization>-->
+
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
   </PropertyGroup>
 
