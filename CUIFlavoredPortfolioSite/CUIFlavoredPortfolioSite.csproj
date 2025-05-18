@@ -15,6 +15,13 @@
     -->
     <!--<InvariantGlobalization>true</InvariantGlobalization>-->
 
+    <!--
+    Since .NET 10 Preview 3, we need to temporarily disable the "UsingBrowserRuntimeWorkload" setting 
+    to avoid the runtime error:
+    "[MONO] * Assertion at /.../method-builder-ilgen.c:631, condition `<disabled>' not met"
+    -->
+    <UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>
+
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
   </PropertyGroup>
 
