@@ -23,6 +23,7 @@
     <UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>
 
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
