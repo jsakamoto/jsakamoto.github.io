@@ -30,8 +30,9 @@
     <!--
     [2025-05-19] This issue is still present in .NET 10 Preview 5.
     [2025-07-28] This issue appears to be fixed in .NET 10 Preview 6.
+    [2025-07-31] Doubt. This issue is still present in .NET 10 Preview 6.
     -->
-    <!--<UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>-->
+    <UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>
 
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
