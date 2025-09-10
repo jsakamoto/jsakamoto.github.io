@@ -31,8 +31,9 @@
     [2025-05-19] This issue is still present in .NET 10 Preview 5.
     [2025-07-28] This issue appears to be fixed in .NET 10 Preview 6.
     [2025-07-31] Doubt. This issue is still present in .NET 10 Preview 6.
+    [2025-09-10] This issue appears to be fixed in .NET 10 RC 1.
     -->
-    <UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>
+    <!--<UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>-->
 
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
@@ -50,8 +51,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-preview.7.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-preview.7.*" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0-rc.1.*" PrivateAssets="all" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
     <PackageReference Include="BlazorWasmPreRendering.Build" Version="7.0.0-preview.1" />
