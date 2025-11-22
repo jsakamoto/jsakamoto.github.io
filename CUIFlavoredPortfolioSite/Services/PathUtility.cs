@@ -5,9 +5,12 @@ public class PathUtility
     public string ReplaceUserHomePath(string path)
     {
         var homeDir = Environment.GetEnvironmentVariable("HOME");
-        if (path == homeDir || path.StartsWith(homeDir + Path.DirectorySeparatorChar) || path.StartsWith(homeDir + Path.AltDirectorySeparatorChar))
+        if (homeDir is not null)
         {
-            path = string.Concat("~", path.AsSpan(homeDir.Length));
+            if (path == homeDir || path.StartsWith(homeDir + Path.DirectorySeparatorChar) || path.StartsWith(homeDir + Path.AltDirectorySeparatorChar))
+            {
+                path = string.Concat("~", path.AsSpan(homeDir.Length));
+            }
         }
         return path;
     }

@@ -8,7 +8,7 @@ public partial class ConsoleComponent : IDisposable
 {
     private ElementReference _ConsoleComponentElement;
 
-    private string ForeColorOf(ConsoleFragment fragment) => fragment.ForeColor;
+    private string? ForeColorOf(ConsoleFragment fragment) => fragment.ForeColor;
 
     private double MarginLeftOf(ConsoleFragment fragment) => fragment.Indent * this._CharWidthPx;
 
@@ -30,7 +30,7 @@ public partial class ConsoleComponent : IDisposable
         }
     }
 
-    private void ConsoleHost_StateHasChanged(object sender, EventArgs e)
+    private void ConsoleHost_StateHasChanged(object? sender, EventArgs e)
     {
         this.StateHasChanged();
         if (this._LastConsoleLinesCount != this.ConsoleHost.Lines.Count())

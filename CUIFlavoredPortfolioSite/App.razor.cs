@@ -35,7 +35,7 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
 
     private bool _Initialized = false;
 
-    private HotKeysContext _HotKeysContext;
+    private HotKeysContext? _HotKeysContext;
 
     protected override async Task OnInitializedAsync()
     {

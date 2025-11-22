@@ -11,13 +11,13 @@ public class ConsoleHostService : IConsoleHost
 
     public IEnumerable<ConsoleLine> Lines => this._Lines;
 
-    private ConsoleLine _CurrentLine = null;
+    private ConsoleLine? _CurrentLine = null;
 
     private string _CurrentForeColor = "#cccccc";
 
     private int _IdSequence = 0;
 
-    public event EventHandler StateChanged;
+    public event EventHandler? StateChanged;
 
     public void StateHasChanged()
     {

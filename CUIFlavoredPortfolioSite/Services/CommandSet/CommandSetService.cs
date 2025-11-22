@@ -1,4 +1,6 @@
-﻿namespace CUIFlavoredPortfolioSite.Services.CommandSet;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CUIFlavoredPortfolioSite.Services.CommandSet;
 
 public class CommandSetService : ICommandSet
 {
@@ -9,7 +11,7 @@ public class CommandSetService : ICommandSet
         this._Commands = commands;
     }
 
-    public bool TryGetCommand(string commandName, out ICommand command)
+    public bool TryGetCommand(string commandName, [NotNullWhen(true)] out ICommand? command)
     {
         command = this._Commands.FirstOrDefault(cmd => cmd.Names.Contains(commandName));
         return command != null;

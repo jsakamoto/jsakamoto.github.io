@@ -15,8 +15,9 @@ public class VersionCommand : ICommand
     {
         var assembly = this.GetType().Assembly;
         var version = assembly.GetName().Version;
-        var productName = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
-        var copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+        if (version is null) throw new InvalidOperationException("Assembly version is not found.");
+        var productName = assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product;
+        var copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
 
         consoleHost.WriteLine($"{Yellow(productName)}");
         consoleHost.WriteLine($"{Cyan("Version")}   - {version}");

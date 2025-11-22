@@ -26,7 +26,7 @@ public class PrintEnvCommand : ICommand
             foreach (var arg in args.Skip(1))
             {
                 if (!envVals.Contains(arg)) continue;
-                consoleHost.WriteLine(envVals[arg].ToString());
+                consoleHost.WriteLine(envVals[arg]?.ToString() ?? "");
             }
         }
         return ValueTask.CompletedTask;

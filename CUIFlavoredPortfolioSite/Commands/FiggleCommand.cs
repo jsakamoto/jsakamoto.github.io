@@ -38,11 +38,12 @@ public class FiggleCommand : ICommand
                 return ValueTask.CompletedTask;
             }
 
-            var found = this._Fonts.Value.TryGetValue(options.Font.ToLower(), out var getFont);
-            if (!found) throw new FontNotFoundException(options.Font);
-
-            var bannerText = getFont().Render(string.Join(' ', args.Skip(1)));
-            consoleHost.WriteLine(bannerText);
+            if (this._Fonts.Value.TryGetValue(options.Font.ToLower(), out var getFont))
+            {
+                var bannerText = getFont().Render(string.Join(' ', args.Skip(1)));
+                consoleHost.WriteLine(bannerText);
+            }
+            else throw new FontNotFoundException(options.Font);
         }
 
         catch (FontNotFoundException e) { consoleHost.WriteLine(Yellow(e.Message)); }
@@ -70,6 +71,6 @@ public class FiggleCommand : ICommand
         return typeof(FiggleFonts)
             .GetProperties(BindingFlags.Static | BindingFlags.Public)
             .Where(prop => prop.PropertyType == typeof(FiggleFont))
-            .ToDictionary(prop => prop.Name.ToLower(), prop => (Func<FiggleFont>)(() => prop.GetValue(null) as FiggleFont));
+            .ToDictionary(prop => prop.Name.ToLower(), prop => (Func<FiggleFont>)(() => (prop.GetValue(null) as FiggleFont)!));
     }
 }

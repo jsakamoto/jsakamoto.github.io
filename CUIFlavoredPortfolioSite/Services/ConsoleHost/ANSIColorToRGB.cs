@@ -1,4 +1,6 @@
-﻿namespace CUIFlavoredPortfolioSite.Services.ConsoleHost;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CUIFlavoredPortfolioSite.Services.ConsoleHost;
 
 public class ANSIColorToRGB
 {
@@ -25,7 +27,7 @@ public class ANSIColorToRGB
         ["\x1b[37m"] = "#cccccc", // Gray       
     };
 
-    public static bool TryGetRGB(string ansiCode, out string rgb)
+    public static bool TryGetRGB(string ansiCode, [NotNullWhen(true)] out string? rgb)
     {
         return _Mappings.TryGetValue(ansiCode, out rgb);
     }

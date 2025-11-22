@@ -22,7 +22,7 @@ public class LsCommand : ICommand
         {
             var fullPath = Path.GetFullPath(path);
             if (Directory.Exists(fullPath)) { fullPath = Path.Combine(fullPath, "*.*"); }
-            var targetDir = Path.GetDirectoryName(fullPath);
+            var targetDir = Path.GetDirectoryName(fullPath) ?? "";
             var wildCard = Path.GetFileName(fullPath);
 
             var dirs = Directory.GetDirectories(targetDir, wildCard)

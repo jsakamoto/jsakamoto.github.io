@@ -6,15 +6,15 @@ public class ConsoleFragment
 
     public string Text { get; set; }
 
-    public string ForeColor { get; }
+    public string? ForeColor { get; }
 
-    public string Link { get; }
+    public string? Link { get; }
 
     public bool NoWrap { get; set; }
 
     public int Indent { get; set; }
 
-    public ConsoleFragment(int id, string text, string foreColor = null, string link = null)
+    public ConsoleFragment(int id, string text, string? foreColor = null, string? link = null)
     {
         this.Id = id;
         this.Text = text;

@@ -1,6 +1,8 @@
-﻿namespace CUIFlavoredPortfolioSite.Services.CommandSet;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace CUIFlavoredPortfolioSite.Services.CommandSet;
 
 public interface ICommandSet
 {
-    bool TryGetCommand(string commandName, out ICommand command);
+    bool TryGetCommand(string commandName, [NotNullWhen(true)] out ICommand? command);
 }

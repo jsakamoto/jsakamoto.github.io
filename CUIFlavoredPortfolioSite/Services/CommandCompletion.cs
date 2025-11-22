@@ -6,7 +6,7 @@ public class CommandCompletion
 {
     private readonly IEnumerable<string> _CommandNames;
 
-    private string[] _LastCandidates = null;
+    private string[] _LastCandidates = [];
 
     private int _LastCandidateIndex = -1;
 
