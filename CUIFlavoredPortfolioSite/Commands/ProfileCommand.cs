@@ -32,12 +32,13 @@ public class ProfileCommand : ICommand
         consoleHost.WriteLine();
 
         consoleHost.WriteLine($"{Cyan("𝕏      ")} - {DarkCyan("[@jsakamoto](https://x.com/jsakamoto)")}");
+        consoleHost.WriteLine($"{Cyan("Bluesky")} - {DarkCyan("[https://bsky.app/profile/jsakamoto.bsky.social](https://bsky.app/profile/jsakamoto.bsky.social)")}");
         consoleHost.WriteLine($"{Cyan("GitHub ")} - {DarkCyan("[https://github.com/jsakamoto](https://github.com/jsakamoto)")}");
         consoleHost.WriteLine($"{Cyan("NuGet  ")} - {DarkCyan("[https://www.nuget.org/profiles/jsakamoto](https://www.nuget.org/profiles/jsakamoto)")}");
-        consoleHost.WriteLine($"{Cyan("Blogs  ")} -");
-        consoleHost.WriteLine($" - dev.to      - {DarkCyan("[https://dev.to/j_sakamoto](https://dev.to/j_sakamoto)")} {DarkGray(" (English contents)")}");
-        consoleHost.WriteLine($" - Qiita       - {DarkCyan("[https://qiita.com/jsakamoto](https://qiita.com/jsakamoto)")} {DarkGray(" (Japanese contents)")}");
-        consoleHost.WriteLine($" - excite blog - {DarkCyan("[https://devadjust.exblog.jp/](https://devadjust.exblog.jp/)")} {DarkGray(" (Japanese contents)")}");
+        consoleHost.WriteLine($"{Cyan("Blogs  ")}");
+        consoleHost.WriteLine($" - dev.to - {DarkCyan("[https://dev.to/j_sakamoto](https://dev.to/j_sakamoto)")}   {DarkGray(" (English contents)")}");
+        consoleHost.WriteLine($" - Qiita  - {DarkCyan("[https://qiita.com/jsakamoto](https://qiita.com/jsakamoto)")} {DarkGray(" (Japanese contents)")}");
+        consoleHost.WriteLine($" - Zenn   - {DarkCyan("[https://zenn.dev/j_sakamoto](https://zenn.dev/j_sakamoto)")} {DarkGray(" (Japanese contents)")}");
 
         return ValueTask.CompletedTask;
     }
