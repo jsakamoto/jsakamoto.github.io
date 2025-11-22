@@ -4,39 +4,13 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>$(WarningsAsErrors);nullable</WarningsAsErrors>
+    <Version>1.4.0</Version>
     <Authors>J.Sakamoto</Authors>
     <Product>CUI Flavored Portfolio Site - Powered by Blazor WebAssembly</Product>
     <Copyright>Copyright (C) J.Sakamoto</Copyright>
     <PackageProjectUrl></PackageProjectUrl>
     <ImplicitUsings>enable</ImplicitUsings>
-
-    <!--
-    [2025-05-19]
-    Since .NET 10 Preview 3, we need to temporarily disable the "InvariantGlobalization" setting 
-    to avoid the exception: "ZLibException: The underlying compression routine could not be loaded correctly."
-    https://github.com/dotnet/runtime/issues/115720
-    -->
-    <!--
-    [2025-05-19] This issue appears to be fixed in .NET 10 Preview 5.
-    -->
     <InvariantGlobalization>true</InvariantGlobalization>
-
-    <!--
-    [2025-05-20]
-    Since .NET 10 Preview 3, we need to temporarily disable the "UsingBrowserRuntimeWorkload" setting 
-    to avoid the runtime error:
-    "[MONO] * Assertion at /.../method-builder-ilgen.c:631, condition `<disabled>' not met"
-    https://github.com/dotnet/runtime/issues/115780
-    -->
-    <!--
-    [2025-05-19] This issue is still present in .NET 10 Preview 5.
-    [2025-07-28] This issue appears to be fixed in .NET 10 Preview 6.
-    [2025-07-31] Doubt. This issue is still present in .NET 10 Preview 6.
-    [2025-09-10] This issue appears to be fixed in .NET 10 RC 1.
-    [2025-09-11] Doubt. This issue is still present in .NET 10 RC 1 on Linux.
-    -->
-    <!--<UsingBrowserRuntimeWorkload>false</UsingBrowserRuntimeWorkload>-->
-
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
   </PropertyGroup>
