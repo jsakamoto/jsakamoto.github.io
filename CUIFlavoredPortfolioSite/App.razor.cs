@@ -80,7 +80,7 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
     {
         const string description = "This is a CUI flavored portfolio site about @jsakamoto that he created using Blazor WebAssembly!";
         const string url = "https://jsakamoto.github.io/";
-        return "https://twitter.com/intent/tweet" +
+        return "https://x.com/intent/tweet" +
             $"?text={Uri.EscapeDataString(description)}" +
             $"&hashtags=Blazor" +
             $"&url={Uri.EscapeDataString(url)}";

@@ -31,7 +31,7 @@ public class ProfileCommand : ICommand
 
         consoleHost.WriteLine();
 
-        consoleHost.WriteLine($"{Cyan("Twitter")} - {DarkCyan("[@jsakamoto](https://twitter.com/jsakamoto)")}");
+        consoleHost.WriteLine($"{Cyan("𝕏      ")} - {DarkCyan("[@jsakamoto](https://x.com/jsakamoto)")}");
         consoleHost.WriteLine($"{Cyan("GitHub ")} - {DarkCyan("[https://github.com/jsakamoto](https://github.com/jsakamoto)")}");
         consoleHost.WriteLine($"{Cyan("NuGet  ")} - {DarkCyan("[https://www.nuget.org/profiles/jsakamoto](https://www.nuget.org/profiles/jsakamoto)")}");
         consoleHost.WriteLine($"{Cyan("Blogs  ")} -");
