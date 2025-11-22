@@ -64,7 +64,7 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
 
     private async Task TypeAndExecuteCommandAsync(string text)
     {
-        var r = new Random((int)(DateTime.Now.Ticks % int.MaxValue));
+        var r = Random.Shared;
         foreach (var c in text)
         {
             this.CommandLineInputText += c;
@@ -138,7 +138,7 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
         this.StateHasChanged();
     }
 
-    private CancellationTokenSource _CommandCanceller;
+    private CancellationTokenSource? _CommandCanceller;
 
     private async ValueTask ProcessCommandLineAsync(string commandLineInputText, bool noSaveHistory = false)
     {
