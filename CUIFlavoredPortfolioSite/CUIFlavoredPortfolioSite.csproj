@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>$(WarningsAsErrors);nullable</WarningsAsErrors>
     <Version>1.4.0</Version>
@@ -27,19 +27,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="11.0.0-preview.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="11.0.0-preview.1.*" PrivateAssets="all" />
     <PackageReference Include="Figgle" Version="0.5.1" />
     <PackageReference Include="CommandLineSwitchParser" Version="1.1.0" />
-    <PackageReference Include="BlazorWasmPreRendering.Build" Version="7.0.0" />
+    <PackageReference Include="BlazorWasmPreRendering.Build" Version="8.0.0-preview.1" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Toolbelt.AnsiEscCode.Colorize" Version="1.0.0" />
-    <PackageReference Include="Toolbelt.Blazor.GetProperty.Script" Version="1.3.0" />
-    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="6.0.1" />
+    <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="6.2.0" />
     <PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="3.1.0" />
     <PackageReference Include="Toolbelt.Web.CssClassInlineBuilder" Version="3.1.0.1" />
   </ItemGroup>
