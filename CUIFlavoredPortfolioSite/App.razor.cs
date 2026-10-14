@@ -59,7 +59,6 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
         }
 
         this._Initialized = true;
-        this.StateHasChanged();
     }
 
     private async Task TypeAndExecuteCommandAsync(string text)
@@ -117,7 +116,6 @@ public partial class App(PathUtility pathUtility) : IAsyncDisposable
                 break;
             case "Tab":
                 this.CommandLineInputText = this.CommandCompletion.Completion(this.CommandLineInputText);
-                this.StateHasChanged();
                 break;
             default: break;
         }
